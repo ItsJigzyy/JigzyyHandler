@@ -1,7 +1,8 @@
-{"engines": {
-  "node": "12.x",
-  "npm": "*"
-},
+{
+  "engines": {
+    "node": "12.x",
+    "npm": "*"
+  },
   "name": "music-bot",
   "main": "index.js",
   "author": "Jigzyy",
@@ -12,12 +13,13 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@discordjs/opus": "^0.3.3",
     "discord-player": "^3.4.0",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.3.0",
     "fs": "0.0.1-security",
+    "node-opus": "^0.3.3",
+    "node-pre-gyp": "^0.17.0",
     "opusscript": "0.0.8",
     "youtube-sr": "^4.0.8",
     "ytdl-core": "^4.8.0"
