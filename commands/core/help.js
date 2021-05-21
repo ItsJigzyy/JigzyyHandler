@@ -11,7 +11,7 @@ module.exports = {
 
             message.channel.send({
                 embed: {
-                    color: 'ORANGE',
+                    color: '#ff331f',
                     author: { name: 'Help pannel' },
                     footer: { text: 'Made by Jigzyy#6385' },
                     fields: [
@@ -30,7 +30,7 @@ module.exports = {
 
             message.channel.send({
                 embed: {
-                    color: 'ORANGE',
+                    color: '#ff331f',
                     author: { name: 'Help pannel' },
                     footer: { text: 'Made by Jigzyy#6385' },
                     fields: [
