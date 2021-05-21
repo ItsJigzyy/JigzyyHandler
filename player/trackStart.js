@@ -4,11 +4,12 @@ module.exports = (client, message, track) => {
 
     const StartEmbed = new MessageEmbed()
 
-    .setTitle(`Now playing...`)
+    .setTitle(`${client.emotes.music} Now playing...`)
     .setColor("#ff331f")
     .setDescription(`\**${track.title}\**`)
     .setAuthor(`Requested by: ${track.requestedBy.username}`)
     .setThumbnail(`${track.thumbnail}`)
+    .setFooter(`Playing in **${message.member.voice.channel.name}**`)
 
 
 
@@ -16,8 +17,8 @@ module.exports = (client, message, track) => {
 
 
 
+// ${client.emotes.music} - Now playing ${track.title} into ${message.member.voice.channel.name} ...
 
 
-
-    message.channel.send(`${client.emotes.music} - Now playing ${track.title} into ${message.member.voice.channel.name} ...`);
+    message.channel.send(StartEmbed);
 };
