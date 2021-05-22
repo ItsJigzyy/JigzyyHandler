@@ -10,7 +10,7 @@ module.exports = {
 
         const StartEmbed = new MessageEmbed()
 
-            .setTitle(`**Server queue - ${message.guild.name} ${client.emotes.queue} ${client.player.getQueue(message).loopMode ? '(looped)' : ''}**`)   // \**
+            .setTitle(`**Server queue - ${message.guild.name} ${client.emotes.queue}**`)   // \**
             .setColor("#ff331f")
             .setDescription(`
         Current : ${queue.playing.title}\n\n ` + (queue.tracks.map((track, i) => {
