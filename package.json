@@ -23,12 +23,5 @@
     "opusscript": "0.0.8",
     "youtube-sr": "^4.0.8",
     "ytdl-core": "^4.8.0"
-  },
-  "bugs": {
-    "url": "https://github.com/ZerioDev/Music-bot/issues"
-  },
-  "homepage": "https://github.com/ZerioDev/Music-bot#readme",
-  "devDependencies": {},
-  "keywords": [],
-  "license": "ISC"
+  }
 }
