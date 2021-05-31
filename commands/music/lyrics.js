@@ -44,7 +44,7 @@ module.exports = {
                 });
                 console.log(query)
                 return query.join(' ')
-            } else return arg.slice(1).join(' ');
+            } //else return arg.slice(1).join(' ');
         };
 
 
