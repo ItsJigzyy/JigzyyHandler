@@ -24,7 +24,7 @@ module.exports = {
         };
 
         const searchLyrics = url => {
-            return Promise.resolve(axios.get(url, { 'Authorization': `Bearer ${settings.GENIUS}` })
+            return Promise.resolve(axios.get(url, { 'Authorization': `Bearer ${client.config.discord.genius}` })
                 .then(response => checkSpotify(response.data.response.hits))
                 .then(path => scrapeLyrics(path))
                 .catch(err => {
