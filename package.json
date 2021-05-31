@@ -23,6 +23,7 @@
     "node-opus": "^0.3.3",
     "node-pre-gyp": "^0.17.0",
     "opusscript": "0.0.8",
+    "stack": "^0.1.0",
     "youtube-sr": "^4.0.8",
     "ytdl-core": "^4.8.0"
   }
