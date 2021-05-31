@@ -9,6 +9,7 @@ module.exports = {
         const getArtistTitle = require('get-artist-title');
         const axios = require('axios');
         const cheerio = require('cheerio');
+        const { Client, MessageEmbed } = require("discord.js");
         const baseURL = `https://api.genius.com/search?access_token=${client.config.discord.genius}`;
         let playlist;
 
@@ -51,7 +52,7 @@ module.exports = {
         const query = createQuery(args[0]);
         searchLyrics(`${baseURL}&q=${encodeURIComponent(query)}`)
             .then(songData => {
-                const embed = new Discord.RichEmbed()
+                const embed = new MessageEmbed()
                     .setColor(0x00AE86)
                     .setTitle(`Lyrics for: ${songData[0]}`)
                     .setDescription(songData[1]);
