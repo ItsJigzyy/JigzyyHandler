@@ -4,11 +4,11 @@ module.exports = {
     category: 'Music',
     utilisation: '{prefix}lyrics [Artist name]',
 
-    execute(client, message, args) {
+    async execute(client, message, args, searcher) {
 
         const lyricsFinder = require("lyrics-finder");
-        const { Client, MessageEmbed } = require("discord.js");
-        module.exports.run = async (client, message, args, searcher) => {
+        const { MessageEmbed } = require("discord.js");
+        //module.exports.run = async (client, message, args, searcher) => {
         
             if (args.length < 1) return message.reply("Please enter the Artist's name first. ~lyrics <Artist Name Here>")
         
@@ -45,7 +45,7 @@ module.exports = {
                     }
                 }
             })
-        }
+        //}
         
         async function finder(artist, songName, message, pages){
             let fullLyrics = await lyricsFinder(artist, songName) || "No results...";
