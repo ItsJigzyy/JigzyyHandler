@@ -20,7 +20,7 @@ module.exports = {
                         { name: 'Filters:', value: client.filters.map((x) => '`' + x + '`').join(', ') },
                     ],
                     timestamp: new Date(),
-                    description: `To use lyrics, ${prefix}lyrics <ARTIST NAME>, afterwards, reply with the song name. Example: ${prefix}lyrics Drake`,
+                    description: `To use lyrics, {prefix}lyrics <ARTIST NAME>, afterwards, reply with the song name. Example: ${prefix}lyrics Drake`,
                 },
             });
         } else {
