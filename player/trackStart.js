@@ -5,7 +5,7 @@ module.exports = (client, message, track) => {
     const StartEmbed = new MessageEmbed()
 
     .setTitle(`${client.emotes.music} Now playing...`)
-    .setColor("Green")
+    .setColor("#2C2F33")
     .setDescription(`\**${track.title}\**`)
     .setAuthor(`Requested by: ${track.requestedBy.username}`)
     .setThumbnail(`${track.thumbnail}`)

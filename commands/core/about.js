@@ -6,7 +6,7 @@ module.exports = {
 
     execute(client, message, args) {
 
-        const { Client, MessageEmbed } = require("discord.js");
+        const { MessageEmbed } = require("discord.js");
 
         const AboutEmbed = new MessageEmbed()
             .setColor('RANDOM')
@@ -16,7 +16,7 @@ module.exports = {
             .setFooter(`Jigzyy, owner of all things ${client.user.username} <3`)
 
 
-
+        message.channel.send(AboutEmbed)
 
 
     }
