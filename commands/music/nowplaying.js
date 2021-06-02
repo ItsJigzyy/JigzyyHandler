@@ -22,17 +22,17 @@ module.exports = {
                 author: { name: track.title },
                 footer: { text: 'Jigzyy#6385' },
                 fields: [
-                    { name: 'Channel', value: track.author, inline: true },
-                    { name: 'Requested by', value: track.requestedBy.username, inline: true },
-                    { name: 'From playlist', value: track.fromPlaylist ? 'Yes' : 'No', inline: true },
+                    { name: 'Channel:', value: track.author, inline: true },
+                    { name: 'Requested by:', value: track.requestedBy.username, inline: true },
+                    { name: 'From playlist:', value: track.fromPlaylist ? 'Yes' : 'No', inline: true },
 
-                    { name: 'Views', value: track.views, inline: true },
-                    { name: 'Duration', value: track.duration, inline: true },
-                    { name: 'Filters activated', value: filters.length + '/' + client.filters.length, inline: true },
+                    { name: 'Views:', value: track.views, inline: true },
+                    { name: 'Duration:', value: track.duration, inline: true },
+                    { name: 'Filters activated:', value: filters.length + '/' + client.filters.length, inline: true },
 
-                    { name: 'Volume', value: client.player.getQueue(message).volume, inline: true },
-                    { name: 'Repeat mode', value: client.player.getQueue(message).repeatMode ? 'Yes' : 'No', inline: true },
-                    { name: 'Currently paused', value: client.player.getQueue(message).paused ? 'Yes' : 'No', inline: true },
+                    { name: 'Volume:', value: client.player.getQueue(message).volume, inline: true },
+                    { name: 'Repeat mode:', value: client.player.getQueue(message).repeatMode ? 'Yes' : 'No', inline: true },
+                    { name: 'Currently paused:', value: client.player.getQueue(message).paused ? 'Yes' : 'No', inline: true },
 
                     { name: 'Progress bar', value: client.player.createProgressBar(message, { timecodes: true }), inline: true }
                 ],
