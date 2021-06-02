@@ -5,7 +5,7 @@ module.exports = {
         queue: ':bar_chart:',
         music: ':musical_note:',
         success: ':white_check_mark:',
-        chart: 'bar_chart', 
+        chart: ':bar_chart:', 
     },
 
     discord: {
