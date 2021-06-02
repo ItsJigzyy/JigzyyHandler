@@ -12,32 +12,32 @@ module.exports = {
             message.channel.send({
                 embed: {
                     color: '#ff331f',
-                    author: { name: 'Help panel' },
-                    footer: { text: 'Made by Jigzyy#6385' },
+                    author: { name: 'The Help Hub' },
+                    footer: { text: 'Jigzyy#6385' },
                     fields: [
-                        { name: 'Bot', value: infos },
-                        { name: 'Music', value: music },
-                        { name: 'Filters', value: client.filters.map((x) => '`' + x + '`').join(', ') },
+                        { name: 'Bot:', value: infos },
+                        { name: 'Music:', value: music },
+                        { name: 'Filters:', value: client.filters.map((x) => '`' + x + '`').join(', ') },
                     ],
                     timestamp: new Date(),
-                    description: `To use filters, ${client.config.discord.prefix}filter (the filter). Example : ${client.config.discord.prefix}filter 8D.`,
+                    description: `To use lyrics, ${prefix}lyrics <ARTIST NAME>, afterwards, reply with the song name. Example: ${prefix}lyrics Drake`,
                 },
             });
         } else {
             const command = message.client.commands.get(args.join(" ").toLowerCase()) || message.client.commands.find(x => x.aliases && x.aliases.includes(args.join(" ").toLowerCase()));
 
-            if (!command) return message.channel.send(`${client.emotes.error} - I did not find this command !`);
+            if (!command) return message.channel.send(`${client.emotes.error} - I did not find this command!`);
 
             message.channel.send({
                 embed: {
-                    color: '#ff331f',
-                    author: { name: 'Help pannel' },
-                    footer: { text: 'Made by Jigzyy#6385' },
+                    color: '#2C2F33',
+                    author: { name: '__Help panel__' },
+                    footer: { text: 'Jigzyy#6385' },
                     fields: [
-                        { name: 'Name', value: command.name, inline: true },
-                        { name: 'Category', value: command.category, inline: true },
-                        { name: 'Aliase(s)', value: command.aliases.length < 1 ? 'None' : command.aliases.join(', '), inline: true },
-                        { name: 'Utilisation', value: command.utilisation.replace('{prefix}', client.config.discord.prefix), inline: true },
+                        { name: 'Command:', value: command.name, inline: true },
+                        { name: 'Category:', value: command.category, inline: true },
+                        { name: 'Aliase(s):', value: command.aliases.length < 1 ? 'None' : command.aliases.join(', '), inline: true },
+                        { name: 'Utilisation:', value: command.utilisation.replace('{prefix}', client.config.discord.prefix), inline: true },
                     ],
                     timestamp: new Date(),
                     description: 'Find information on the command provided.\nMandatory arguments `[]`, optional arguments `<>`.',
