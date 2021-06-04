@@ -9,7 +9,7 @@ module.exports = (client, message, track) => {
     .setDescription(`\**${track.title}\**`)
     .setAuthor(`Requested by: ${track.requestedBy.username}`)
     .setThumbnail(`${track.thumbnail}`)
-    .setFooter(`Playing in ${message.member.voice.channel.name}`)
+   // .setFooter(`Playing in ${message.member.voice.channel.name}`)
 
 
 
