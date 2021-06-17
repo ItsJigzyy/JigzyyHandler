@@ -26,12 +26,12 @@ module.exports = {
         } else {
             const command = message.client.commands.get(args.join(" ").toLowerCase()) || message.client.commands.find(x => x.aliases && x.aliases.includes(args.join(" ").toLowerCase()));
 
-            if (!command) return message.channel.send(`${client.emotes.error} - I did not find this command!`);
+            if (!command) return message.channel.send(`${client.emotes.error} I can't find this command?`);
 
             message.channel.send({
                 embed: {
                     color: '#2C2F33',
-                    author: { name: '__Help panel__' },
+                    author: { name: 'Help panel' },
                     footer: { text: 'Jigzyy#6385' },
                     fields: [
                         { name: 'Command:', value: command.name, inline: true },
