@@ -9,9 +9,9 @@ module.exports = {
     },
 
     discord: {
-        token: 'ODQ1Mzk2ODE0Njg4OTQ0MTQ4.YKgXIw.7k2-XpcelMH38AlUSUeE68pbUNE',
+        token: 'ODQ1Mzk2ODE0Njg4OTQ0MTQ4.YKgXIw.Q--YsYkiwieuKu76YJWfz31zH0o',
         prefix: '~',
-        activity: 'the classics!',
+        activity: 'dubstep! | ~help',
         genius: 'ZFV1Dr6IHfF117aC3McqtCU2VYDs0R-tMmuMOCOAMs84MCOQ3G3KJcm-mUJDB64T'
     },
 
