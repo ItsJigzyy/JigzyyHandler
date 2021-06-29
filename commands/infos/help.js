@@ -1,7 +1,7 @@
 module.exports = {
     name: 'help',
     aliases: ['h'],
-    category: 'Infos',
+    category: 'infos',
     utilisation: '{prefix}help <command name>',
 
     execute(client, message, args) {
@@ -24,7 +24,7 @@ module.exports = {
                         { name: 'Music:', value: music },
                         { name: 'Moderation:', value: mod },
                         { name: 'Custom Commands', value: custom },
-                       // { name: 'Filters:', value: client.filters.map((x) => '`' + x + '`').join(', ') },
+                        // { name: 'Filters:', value: client.filters.map((x) => '`' + x + '`').join(', ') },
                     ],
                     timestamp: new Date(),
                     description: `The all-new Xcel bot, revamped with the Eris bot`,

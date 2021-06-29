@@ -13,19 +13,21 @@ client.emotes = client.config.emojis;
 client.filters = client.config.filters;
 client.commands = new discord.Collection();
 
+const { MessageEmbed } = require("discord.js");
+
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(ch => ch.name === '🤝welcomes🤝');
     if (!channel) return message.channel.send("Cannot find the welcome channel or an error has occured :confused:");
     let WelcomeEmbed = new MessageEmbed()
-      .setColor('RANDOM')
-      .setAuthor(`${member.user.tag} has joined the server!`)
-      .setDescription(`Hey, don't forget to check out <#804222389214511134>`)
-      .setFooter(`Xcel League`)
-      .setTimestamp()
-      // \`\`\`css\n${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}\`\`\`
-  
+        .setColor('RANDOM')
+        .setAuthor(`${member.user.tag} has joined the server!`)
+        .setDescription(`Hey, don't forget to check out <#804222389214511134>`)
+        .setFooter(`Xcel League`)
+        .setTimestamp()
+    // \`\`\`css\n${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}\`\`\`
+
     channel.send(WelcomeEmbed).catch(err => console.log(err));
-  })
+})
 
 
 fs.readdirSync('./commands').forEach(dirs => {
