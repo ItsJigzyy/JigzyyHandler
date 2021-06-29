@@ -1,6 +1,6 @@
 module.exports = {
     name: 'Dad-joke',
-    aliases: ['dad'],
+    aliases: ['dadjoke'],
     category: 'Fun',
     utilisation: '{prefix}dad-joke',
 
