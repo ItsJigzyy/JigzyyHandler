@@ -5,6 +5,6 @@ module.exports = {
     utilisation: '{prefix}ping',
 
     execute(client, message) {
-        message.channel.send(`${client.emotes.chart} - Ping: **${client.ws.ping}ms**!`);
+        message.channel.send(`Ping: **${client.ws.ping}ms**!`);
     },
 };

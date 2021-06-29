@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'about',
-    aliases: ['a'],
+    name: 'Giveaway',
+    aliases: ['gway'],
     category: 'Core',
     utilisation: '{prefix}giveaway ', // FINISH THIS <<<<<
 

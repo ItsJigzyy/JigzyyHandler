@@ -4,7 +4,7 @@ module.exports = {
     category: 'Fun',
     utilisation: '{prefix}8ball <question>',
 
-    execute(client, message, args) {
+   async execute(client, message, args) {
 
         function doMagic8BallVoodoo() {
             var rand = [':8ball: Yes', ':8ball: No', ':8ball: Maybe', ':8ball: Of course', ":8ball: I don't think so",];
