@@ -57,51 +57,53 @@ for (const file of player) {
 
 //  Message Content Includes: 
 
+m3sg = message.content.toLowerCase();
+
 client.on("message", (message) => {
     if (message.author.bot) return;
-    if (message.content.toLowerCase().startsWith("Morning")) {
-      message.channel.send("Good morning!");
+    if (m3sg.startsWith ("Morning")) {
+        message.channel.send("Good morning!");
     }
-  });
-  
-  client.on("message", (message) => {
+});
+
+client.on("message", (message) => {
     if (message.author.bot) return;
-    if (message.content.toLowerCase().startsWith("Gm")) {
-      message.channel.send("Good morning!");
+    if (m3sg.startsWith ("Gm")) {
+        message.channel.send("Good morning!");
     }
-  });
-  
-  client.on("message", (message) => {
+});
+
+client.on("message", (message) => {
     if (message.author.bot) return;
-    if (message.content.toLowerCase().startsWith("Gn")) {
-      message.channel.send("Goodnight!");
+    if (m3sg.startsWith ("Gn")) {
+        message.channel.send("Goodnight!");
     }
-  });
-  
-  client.on("message", (message) => {
+});
+
+client.on("message", (message) => {
     if (message.author.bot) return;
-    if (message.content.toLowerCase().startsWith("Goodnight")) {
-      message.channel.send("Goodnight!");
+    if (m3sg.startsWith ("Goodnight")) {
+        message.channel.send("Goodnight!");
     }
-  });
-  
-  
-  
-  client.on("message", (message) => {
+});
+
+client.on("message", (message) => {
     if (message.author.bot) return;
-    if (message.content.toLowerCase().startsWith("Night")) {
-      message.channel.send("Goodnight!");
+    if (m3sg.startsWith ("Night")) {
+        message.channel.send("Goodnight!");
     }
-  });
-  
-  client.on("message", (message) => {
+});
+
+client.on("message", (message) => {
     if (message.author.bot) return;
-    if (message.content.toLowerCase().startsWith("Bye")) { message.react('👋') }
-  
-  
-  
-  
-  });
+    if (m3sg.startsWith ("Bye")) {
+        message.react('👋')
+    }
+
+
+
+
+});
 
 
 
