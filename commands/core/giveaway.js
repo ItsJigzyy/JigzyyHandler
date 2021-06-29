@@ -4,7 +4,7 @@ module.exports = {
     category: 'Core',
     utilisation: '{prefix}giveaway ', // FINISH THIS <<<<<
 
-    execute(client, message, args) {
+   async execute(client, message, args) {
 
 
 if (message.member.hasPermission('ADMINISTRATOR')) {
