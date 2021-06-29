@@ -5,6 +5,8 @@ module.exports = {
     utilisation: '{prefix}help <command name>',
 
     execute(client, message, args) {
+        const { MessageEmbed } = require("discord.js");
+
         if (!args[0]) {
             const infos = message.client.commands.filter(x => x.category == 'Infos').map((x) => '`' + x.name + '`').join(', ');
             const music = message.client.commands.filter(x => x.category == 'Music').map((x) => '`' + x.name + '`').join(', ');
@@ -12,24 +14,21 @@ module.exports = {
             const fun = message.client.commands.filter(x => x.category == 'Fun').map((x) => '`' + x.name + '`').join(', ');
             const custom = message.client.commands.filter(x => x.category == 'Custom').map((x) => '`' + x.name + '`').join(', ');
 
+            HelpEmbed = new MessageEmbed()
+                .setColor('#ff331f')
+                .setAuthor("Xcel Help Hub")
+                .setDescription(`The all-new Xcel bot, revamped with the Eris bot`)
+                .addField(`Bot:`, `${infos}`)
+                .addField(`Fun:`, `${fun}`)
+                .addField(`Music:`, `${music}`)
+                .addField(`Moderation:`, `${mod}`)
+                .addField(`Custom Commands:`, `${custom}`)
+                .setFooter(`Xcel & Eris Embedded`)
+                .setTimestamp(new Date())
 
-            message.channel.send({
-                embed: {
-                    color: '#ff331f',
-                    author: { name: 'Xcel Help Hub' },
-                    footer: { text: 'Xcel & Eris Embedded' },
-                    fields: [
-                        { name: 'Bot:', value: infos },
-                        { name: 'Fun:', value: fun },
-                        { name: 'Music:', value: music },
-                        { name: 'Moderation:', value: mod },
-                        { name: 'Custom Commands', value: custom },
-                        // { name: 'Filters:', value: client.filters.map((x) => '`' + x + '`').join(', ') },
-                    ],
-                    timestamp: new Date(),
-                    description: `The all-new Xcel bot, revamped with the Eris bot`,
-                },
-            });
+            message.channel.send(HelpEmbed)
+
+
         } else {
             const command = message.client.commands.get(args.join(" ").toLowerCase()) || message.client.commands.find(x => x.aliases && x.aliases.includes(args.join(" ").toLowerCase()));
 
