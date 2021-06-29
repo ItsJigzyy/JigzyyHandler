@@ -340,7 +340,7 @@ client.on('message', async function (message) {
                     return message.channel.send(`${user.username} (${user.id}) is not blocked from the modmail at the moment.`)
                 }
             }).catch(err => {
-                if (err) return message.channel.send(`Unknown user > Do ${config.prefix}unblock <user's ID>`);
+                if (err) return message.channel.send(`I don't know what has happened here :confused:\nMake sure you're uisng the correct User ID, do ${config.prefix}id!`);
             })
         }
     };
