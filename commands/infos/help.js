@@ -34,21 +34,19 @@ module.exports = {
 
             if (!command) return message.channel.send(`${client.emotes.error} I can't find this command?`);
 
-            message.channel.send({
-                embed: {
-                    color: '#2C2F33',
-                    author: { name: 'Xcel Help Hub' },
-                    footer: { text: 'Jigzyy#6385' },
-                    fields: [
-                        { name: 'Command:', value: command.name, inline: true },
-                        { name: 'Category:', value: command.category, inline: true },
-                        { name: 'Aliase(s):', value: command.aliases.length < 1 ? 'None' : command.aliases.join(', '), inline: true },
-                        { name: 'Utilisation:', value: command.utilisation.replace('{prefix}', client.config.discord.prefix), inline: true },
-                    ],
-                    timestamp: new Date(),
-                    description: 'Find information on the command provided.\nMandatory arguments `[]`, optional arguments `<>`.',
-                }
-            });
+            ExtraHelp = new MessageEmbed()
+                .setColor('#2C2F33')
+                .setAuthor("Xcel Help Hub")
+                .setDescription('Find information on the command provided\nMandatory arguments `[]`, optional arguments `<>`')
+                .addField(`Command:`, `${command.name}`, true)
+                .addField(`Category:`, `${command.category}`, true)
+                .addField(`Aliase(s):`, `${command.aliases.length}` < 1 ? 'None' : command.aliases.join(', '), true)
+                .addField(`Utilisation:`, `${command.utilisation}`.replace('{prefix}', client.config.discord.prefix), true)
+                .setFooter("Jigzyy#6385")
+                .setTimestamp(new Date())
+
+            message.channel.send(ExtraHelp)
+
         };
     },
 };
