@@ -4,7 +4,7 @@ module.exports = {
     category: 'Mod',
     utilisation: '{prefix}apply',
 
-    execute(client, message, args) {
+    async execute(client, message, args) {
 
         const { MessageEmbed } = require("discord.js");
 
