@@ -6,6 +6,9 @@ module.exports = {
 
     execute(client, message, args) {
 
+        const { MessageEmbed } = require("discord.js");
+
+
         if (!message.member.hasPermission("KICK_MEMBERS") || !message.member.hasPermission("ADMINISTRATOR"))
         return message.reply("You don't have permission to use this command!");
 
@@ -24,11 +27,13 @@ module.exports = {
 
         kickEmbed = new MessageEmbed()
             .setTitle(`**${message.author.tag} (ID: ${message.author.id})**`)
+            .set
             .setDescription(`
         👢**Kicked**: ${user.tag} *(ID: ${user.id})*
         📋**Reason**: ${reason}
         `)
             .setThumbnail(`${user.displayAvatarURL({ dynamic: true })}`)
+            
 
         message.channel.send(kickEmbed)
         // message.channel.send(`**${user.tag}** was kicked from the server for ${reason}!`);

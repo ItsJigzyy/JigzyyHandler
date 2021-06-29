@@ -6,6 +6,7 @@ module.exports = {
 
     execute(client, message, args) {
 
+        const { MessageEmbed } = require("discord.js");
 
         message.delete().catch(O_o => { });
 
