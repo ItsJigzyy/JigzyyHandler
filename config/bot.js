@@ -11,7 +11,7 @@ module.exports = {
     discord: {
         token: 'ODQxOTM3MDQwODgyNzk0NDk2.YJuA-A.Brjtlw-QRsPi0wADiXt0U4AnUMA',
         prefix: '$',
-        activity: 'our Xcel chats | $help',
+        activity: 'Xcel chats | $help',
         
     },
 
