@@ -4,7 +4,7 @@ module.exports = {
     category: 'Mod',
     utilisation: '{prefix}purge <number>',
 
-    execute(client, message, args) {
+    async execute(client, message, args) {
 
  if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(`You don't have permission to use this command! \n Permission Required: **__MANAGE MESSAGES__**`)
 

@@ -4,7 +4,7 @@ module.exports = {
     category: 'Mod',
     utilisation: '{prefix}ban @user',
 
-    execute(client, message, args) {
+    async execute(client, message, args) {
 
         if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You don't have permission to use this command!")
         let user = message.guild.member(message.mentions.users.first()) //|| message.guild.members.cache.get(args[0])
