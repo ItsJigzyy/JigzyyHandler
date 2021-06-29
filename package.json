@@ -7,7 +7,6 @@
   "main": "index.js",
   "author": "Jigzyy",
   "version": "5.0.0",
-  "description": "A complete code to download for a music bot. Using a module (discord-player).",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
