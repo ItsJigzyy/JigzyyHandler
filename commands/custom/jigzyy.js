@@ -6,6 +6,7 @@ module.exports = {
 
     execute(client, message) {
 
+        const { MessageEmbed } = require("discord.js");
         const figlet = require("figlet");
         const text = ('Jigzyy')
 

@@ -6,6 +6,8 @@ module.exports = {
 
     execute(client, message, args) {
 
+        const { MessageEmbed } = require("discord.js");
+
         if (!message.member.hasPermission("KICK_MEMBERS") || !message.member.hasPermission("ADMINISTRATOR"))
             return message.reply("You don't have permission to use this command!");
 
