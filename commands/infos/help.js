@@ -1,7 +1,7 @@
 module.exports = {
     name: 'help',
     aliases: ['h'],
-    category: 'infos',
+    category: 'Infos',
     utilisation: '{prefix}help <command name>',
 
     execute(client, message, args) {

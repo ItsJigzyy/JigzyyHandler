@@ -1,7 +1,7 @@
 module.exports = {
     name: 'Kick',
     aliases: [''],
-    category: 'Moderation',
+    category: 'moderation',
     utilisation: '{prefix}kick <@user>',
 
     execute(client, message, args) {
