@@ -9,8 +9,8 @@ module.exports = {
 
         if (!args[0]) {
             const infos = message.client.commands.filter(x => x.category == 'Infos').map((x) => '`' + x.name + '`').join(', ');
+            const mod = message.client.commands.filter(x => x.category == 'Mod').map((x) => '`' + x.name + '`').join(', ');
             const music = message.client.commands.filter(x => x.category == 'Music').map((x) => '`' + x.name + '`').join(', ');
-            const mod = message.client.commands.filter(x => x.category == 'Moderation').map((x) => '`' + x.name + '`').join(', ');
             const fun = message.client.commands.filter(x => x.category == 'Fun').map((x) => '`' + x.name + '`').join(', ');
             const custom = message.client.commands.filter(x => x.category == 'Custom').map((x) => '`' + x.name + '`').join(', ');
 
@@ -20,8 +20,8 @@ module.exports = {
                 .setDescription(`The all-new Xcel bot, revamped with the Eris bot`)
                 .addField(`Bot:`, `${infos}`)
                 .addField(`Fun:`, `${fun}`)
-                .addField(`Music:`, `${music}`)
                 .addField(`Moderation:`, `${mod}`)
+                .addField(`Music:`, `${music}`)
                 .addField(`Custom Commands:`, `${custom}`)
                 .setFooter(`Xcel & Eris Embedded`)
                 .setTimestamp(new Date())
