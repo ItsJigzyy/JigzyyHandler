@@ -1,11 +1,13 @@
 const fs = require('fs');
 const discord = require('discord.js');
+const Discord = require("discord.js");
 const client = new discord.Client({ disableMentions: 'everyone' });
 
 const { Player } = require('discord-player');
 
 const db = require("quick.db"); // npm i quick.db
 const config = require("./config.json");
+const table = new db.table("Tickets");
 
 client.player = new Player(client);
 client.config = require('./config/bot');
