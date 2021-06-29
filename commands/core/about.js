@@ -12,7 +12,7 @@ module.exports = {
             .setColor('RANDOM')
             .setThumbnail(client.user.displayAvatarURL())
             .setTitle(`About ${client.user.username}:`)
-            .setDescription(`I'm Jigzyy, I like to code stuff when I'm bored. ${client.user.username} was one of my projects, I started coding this musical masterpiece around the 14th of April 2021.\n\nI try to add more unique/helpful commands and features whenever I can.\nIf you have any suggestions for commands, I'd love to hear them so just DM me :D`)
+            .setDescription(`The Xcel bot has been an ongoing project since around the first lockdown`)
             .setFooter(`Jigzyy, owner of all things ${client.user.username} <3`)
 
 

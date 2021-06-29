@@ -18,7 +18,7 @@ module.exports = {
 
         message.channel.send({
             embed: {
-                color: '#ff331f',
+                color: '#000000',
                 author: { name: track.title },
                 footer: { text: 'Jigzyy#6385' },
                 fields: [

@@ -20,8 +20,8 @@ module.exports = {
 
         message.channel.send({
             embed: {
-                color: '#ff331f',
-                footer: { text: 'Jigzyy#6385' },
+                color: '#2C2F33',
+                footer: { text: 'Xcel & Eris' },
                 fields: [
                     { name: 'Filters', value: filtersStatuses[0].join('\n'), inline: true },
                     { name: '** **', value: filtersStatuses[1].join('\n'), inline: true },

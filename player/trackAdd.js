@@ -5,7 +5,7 @@ module.exports = (client, message, queue, track) => {
     const StartEmbed = new MessageEmbed()
 
     
-    .setColor("#ff331f")
+    .setColor("#2C2F33")
     .setDescription(`${client.emotes.music} \**${track.title}\** added to the queue`)
     .setFooter(`Requested by: ${track.requestedBy.username}`)
 

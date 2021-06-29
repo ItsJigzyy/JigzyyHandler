@@ -1,26 +1,33 @@
 module.exports = {
     name: 'help',
     aliases: ['h'],
-    category: 'Core',
+    category: 'infos',
     utilisation: '{prefix}help <command name>',
 
     execute(client, message, args) {
         if (!args[0]) {
             const infos = message.client.commands.filter(x => x.category == 'Infos').map((x) => '`' + x.name + '`').join(', ');
             const music = message.client.commands.filter(x => x.category == 'Music').map((x) => '`' + x.name + '`').join(', ');
+            const mod = message.client.commands.filter(x => x.category == 'Moderation').map((x) => '`' + x.name + '`').join(', ');
+            const fun = message.client.commands.filter(x => x.category == 'Fun').map((x) => '`' + x.name + '`').join(', ');
+            const custom = message.client.commands.filter(x => x.category == 'Custom').map((x) => '`' + x.name + '`').join(', ');
+
 
             message.channel.send({
                 embed: {
                     color: '#ff331f',
-                    author: { name: 'The Help Hub' },
-                    footer: { text: 'Jigzyy#6385' },
+                    author: { name: 'Xcel Help Hub' },
+                    footer: { text: 'Xcel & Eris Embedded' },
                     fields: [
                         { name: 'Bot:', value: infos },
+                        { name: 'Fun:', value: fun },
                         { name: 'Music:', value: music },
-                        { name: 'Filters:', value: client.filters.map((x) => '`' + x + '`').join(', ') },
+                        { name: 'Moderation:', value: mod },
+                        { name: 'Custom Commands', value: custom },
+                       // { name: 'Filters:', value: client.filters.map((x) => '`' + x + '`').join(', ') },
                     ],
                     timestamp: new Date(),
-                    description: `To use lyrics, ${client.config.discord.prefix}lyrics <ARTIST NAME>, afterwards, reply with the song name. Example: ${client.config.discord.prefix}lyrics Drake`,
+                    description: `The all-new Xcel bot, revamped with the Eris bot`,
                 },
             });
         } else {
@@ -31,7 +38,7 @@ module.exports = {
             message.channel.send({
                 embed: {
                     color: '#2C2F33',
-                    author: { name: 'Help panel' },
+                    author: { name: 'Xcel Help Hub' },
                     footer: { text: 'Jigzyy#6385' },
                     fields: [
                         { name: 'Command:', value: command.name, inline: true },

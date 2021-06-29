@@ -9,10 +9,10 @@ module.exports = {
     },
 
     discord: {
-        token: 'ODQ1Mzk2ODE0Njg4OTQ0MTQ4.YKgXIw.Q--YsYkiwieuKu76YJWfz31zH0o',
-        prefix: '~',
-        activity: 'dubstep! | ~help',
-        genius: 'ZFV1Dr6IHfF117aC3McqtCU2VYDs0R-tMmuMOCOAMs84MCOQ3G3KJcm-mUJDB64T'
+        token: 'ODQxOTM3MDQwODgyNzk0NDk2.YJuA-A.Brjtlw-QRsPi0wADiXt0U4AnUMA',
+        prefix: '$',
+        activity: 'our Xcel chats | $help',
+        
     },
 
     filters: ['8D', 'gate', 'haas', 'phaser', 'treble', 'tremolo', 'vibrato', 'reverse', 'karaoke', 'flanger', 'mcompand', 'pulsator', 'subboost', 'bassboost', 'vaporwave', 'nightcore', 'normalizer', 'surrounding'],
