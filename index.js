@@ -5,7 +5,7 @@ const client = new discord.Client({ disableMentions: 'everyone' });
 const { Player } = require('discord-player');
 
 const db = require("quick.db"); // npm i quick.db
-
+const config = require("./config.json");
 
 client.player = new Player(client);
 client.config = require('./config/bot');
@@ -154,7 +154,7 @@ client.on('message', async function (message) {
                 try {
                     supportServer.channels.cache.get(config.log).send({ embed: newTicket })
                 } catch (e) {
-                    if (e) supportServer.channels.cache.get(config.log).send(`Ticket #${actualticket} was created by ${author.tag}.`)
+                    if (e) supportServer.channels.cache.get(config.log).send(`Ticket #${actualticket} was created by ${author.tag}`)
                 }
             }
 
