@@ -1,8 +1,8 @@
 module.exports = {
-    name: 'User',
-    aliases: ['whois'],
+    name: 'Weather',
+    aliases: ['weather'],
     category: 'infos',
-    utilisation: '{prefix}user',
+    utilisation: '{prefix}weather',
 
     async execute(client, message, args) {
 

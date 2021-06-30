@@ -2,12 +2,13 @@ module.exports = {
     name: 'User',
     aliases: ['whois'],
     category: 'infos',
-    utilisation: '{prefix}user <user>',
+    utilisation: '{prefix}user',
 
-    async execute(client, message, args) {
+    execute(client, message, args) {
 
-        const { MessageEmbed } = require("discord.js");
         const moment = require('moment');
+        const { MessageEmbed } = require("discord.js");
+        const Discord = require("discord.js")
 
         const flags = {
             DISCORD_EMPLOYEE: 'Discord Employee',
@@ -43,7 +44,7 @@ module.exports = {
 
         var presence = member.presence.activities.length ? member.presence.activities.filter(x => x.type === "PLAYING") : null;
         const userFlags = member.user.flags.toArray();
-        const embed = new MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
             .setColor(member.displayHexColor || '#ff331f')
             .addField('User', [
