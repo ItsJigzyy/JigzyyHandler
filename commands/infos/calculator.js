@@ -1,7 +1,7 @@
 module.exports = {
     name: 'Calculator',
     aliases: ['Calc'],
-    category: 'infos',
+    category: 'Infos',
     utilisation: '{prefix}calculator',
 
     async execute(client, message, args) {

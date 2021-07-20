@@ -1,6 +1,6 @@
 module.exports = {
     name: 'help',
-    aliases: ['h'],
+    aliases: ['commands'],
     category: 'infos',
     utilisation: '{prefix}help <command name>',
 
@@ -13,14 +13,16 @@ module.exports = {
             const music = message.client.commands.filter(x => x.category == 'Music').map((x) => '`' + x.name + '`').join(', ');
             const fun = message.client.commands.filter(x => x.category == 'Fun').map((x) => '`' + x.name + '`').join(', ');
             const custom = message.client.commands.filter(x => x.category == 'Custom').map((x) => '`' + x.name + '`').join(', ');
+            const backups = message.client.commands.filter(x => x.category == 'Backup').map((x) => '`' + x.name + '`').join(', ');
 
             HelpEmbed = new MessageEmbed()
                 .setColor('#ff331f')
                 .setAuthor("Xcel Help Hub")
                 .setDescription(`The all-new Xcel bot, revamped with the Eris bot`)
                 .addField(`Bot:`, `${infos}`)
-                .addField(`Fun:`, `${fun}`)
+                .addField(`Backup:`, `${backups}`)
                 .addField(`Moderation:`, `${mod}`)
+                .addField(`Fun:`, `${fun}`)
                 .addField(`Music:`, `${music}`)
                 .addField(`Custom Commands:`, `${custom}`)
                 .setFooter(`Xcel & Eris Embedded`)

@@ -31,6 +31,20 @@ client.on('guildMemberAdd', member => {
     channel.send(WelcomeEmbed).catch(err => console.log(err));
 })
 
+client.on('guildMemberRemove', member => {
+    const channel = member.guild.channels.cache.find(ch => ch.name === '👋goodbyes👋');
+    if (!channel) return message.channel.send("Cannot find the leave channel or an error has occured :confused:");
+    let LeaveEmbed = new MessageEmbed()
+        .setColor('RANDOM')
+        .setAuthor(`${member.user.tag} has left the server!`)
+        .setDescription(`We'll miss you, make sure to come back one day. 🙂💕`)
+        .setFooter(`Xcel League`)
+        .setTimestamp()
+    // \`\`\`css\n${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}\`\`\`
+
+    channel.send(LeaveEmbed).catch(err => console.log(err));
+})
+
 
 fs.readdirSync('./commands').forEach(dirs => {
     const commands = fs.readdirSync(`./commands/${dirs}`).filter(files => files.endsWith('.js'));

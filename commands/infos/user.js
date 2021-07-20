@@ -1,7 +1,7 @@
 module.exports = {
     name: 'User',
     aliases: ['whois'],
-    category: 'infos',
+    category: 'Infos',
     utilisation: '{prefix}user',
 
     execute(client, message, args) {

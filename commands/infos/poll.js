@@ -1,7 +1,7 @@
 module.exports = {
     name: 'Poll',
     aliases: ['poll'],
-    category: 'infos',
+    category: 'Infos',
     utilisation: '{prefix}poll',
 
     async execute(client, message, args) {

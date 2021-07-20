@@ -1,7 +1,7 @@
 module.exports = {
     name: 'Weather',
     aliases: ['weather'],
-    category: 'infos',
+    category: 'Infos',
     utilisation: '{prefix}weather',
 
     async execute(client, message, args) {

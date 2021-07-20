@@ -1,7 +1,7 @@
 module.exports = {
     name: 'Server',
     aliases: ['server'],
-    category: 'infos',
+    category: 'Infos',
     utilisation: '{prefix}server',
 
     async execute(client, message, args) {
