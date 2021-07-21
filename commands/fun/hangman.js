@@ -1,10 +1,13 @@
 module.exports = {
     name: 'Hangman',
     aliases: ['Hang'],
+    playing: new Set(),
     category: 'Fun',
     utilisation: '{prefix}hangman',
 
     async execute(client, message, args) {
+
+        
 
         if (this.playing.has(message.channel.id)) return message.reply('Only one game may be occurring per channel.');
         this.playing.add(message.channel.id);
