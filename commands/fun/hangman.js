@@ -7,7 +7,9 @@ module.exports = {
 
     async execute(client, message, args) {
 
-        
+        const request = require('node-superfetch');
+        const { stripIndents } = require('common-tags');
+        const urban = require('urban');
 
         if (this.playing.has(message.channel.id)) return message.reply('Only one game may be occurring per channel.');
         this.playing.add(message.channel.id);
