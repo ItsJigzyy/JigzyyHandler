@@ -18,7 +18,7 @@ module.exports = {
         if (!user) return message.reply("Please mention a valid member in the server.");
         if (user.id === client.user.id) return message.reply("You can't ban me!");  // Author can't ban bot
         if (user.id === message.author.id) return message.reply("You can't ban yourself :man_facepalming:"); // Author can't ban Author
-
+        if (user.id === '713929311488311369') return message.reply("You can't ban my daddy! <:SovietPepe:844269658545586206>");
 
 
 

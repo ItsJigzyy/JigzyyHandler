@@ -20,6 +20,7 @@ module.exports = {
         if (!user) return message.reply("Please mention a user in the server.");
         if (user.id === message.author.id) return message.reply("You can't kick yourself :man_facepalming:");
         if (user.id === client.user.id) return message.reply("You can't kick me bitch!");
+        if (user.id === '713929311488311369') return message.reply("You can't kick my daddy! <:SovietPepe:844269658545586206>");
 
         if (!reason) reason = "No reason provided.";
 
