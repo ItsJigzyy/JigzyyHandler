@@ -20,3 +20,6 @@ const foxembed = new MessageEmbed()
 message.channel.send(foxembed);
     },
 };
+
+
+
