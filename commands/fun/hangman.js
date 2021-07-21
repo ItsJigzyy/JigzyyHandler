@@ -1,8 +1,8 @@
 module.exports = {
-    name: 'Fox',
-    aliases: ['Foxy'],
+    name: 'Hangman',
+    aliases: ['Hang'],
     category: 'Fun',
-    utilisation: '{prefix}fox',
+    utilisation: '{prefix}hangman',
 
     async execute(client, message, args) {
 
