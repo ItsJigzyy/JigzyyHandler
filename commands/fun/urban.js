@@ -24,8 +24,6 @@ module.exports = {
             const def = new MessageEmbed()
                 .setTitle(json.word)
                 .setDescription(json.definition)
-                .addField('Upvotes', json.thumbs_up, true)
-                .addField('Downvotes', json.thumb_down, true)
                 .setTimestamp(new Date())
                 .setFooter(`Written by ${json.author}`);
 
