@@ -6,8 +6,9 @@ module.exports = {
 
     async execute(client, message, args) {
 
+        const { MessageEmbed } = require("discord.js");
         const urban = require('urban');
-        const Discord = require('discord.js');
+        
 
         if (args.length < 1) {
             return message.channel.send('Please enter a word');
@@ -20,7 +21,7 @@ module.exports = {
                 return message.channel.send('No such word exist!');
             }
             console.log(json);
-            const def = new Discord.MessageEmbed()
+            const def = new MessageEmbed()
                 .setTitle(json.word)
                 .setDescription(json.definition)
                 .addField('Upvotes', json.thumbs_up, true)
