@@ -51,7 +51,8 @@ module.exports = {
                     }
                     const choice = guess.first().content.toLowerCase();
                     if (choice === 'end') break;
-                    if (choice.length > 1 && (choice === word || choice === word.toLowerCase())) {
+                    if (choice.length > 1 && (choice === word.toLowerCase())) {
+                        //  if (choice.length > 1 && (choice === word || choice === word.toLowerCase())) {
                         guessed = true;
                         break;
                     } else if (word.includes(choice)) {
