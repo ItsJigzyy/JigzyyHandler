@@ -20,7 +20,7 @@ module.exports = {
                 return message.channel.send('No such word exist!');
             }
             console.log(json);
-            const def = new Discord.RichEmbed()
+            const def = new Discord.MessageEmbed()
                 .setTitle(json.word)
                 .setDescription(json.definition)
                 .addField('Upvotes', json.thumbs_up, true)
