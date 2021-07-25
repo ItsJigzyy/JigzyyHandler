@@ -15,6 +15,9 @@ module.exports = {
               {
                  id: '714190667558944849',
                  deny : ['SEND_MESSAGES'],
+                 deny : ['ADD_REACTIONS'],
+                 allow : ['READ_MESSAGES'],
+                 allow : ['READ_MESSAGE_HISTORY'],
               },
              ],);
             const embed = new MessageEmbed()
