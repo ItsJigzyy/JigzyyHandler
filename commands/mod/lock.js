@@ -23,7 +23,7 @@ module.exports = {
                 allow: ['VIEW_CHANNEL'],
                 allow: ['READ_MESSAGE_HISTORY'],
             },
-        ]);
+        ],);
         const embed = new MessageEmbed()
             .setAuthor(`Xcel Channel Updates`, message.guild.iconURL())
             .setTitle("Initiating lockdown!")

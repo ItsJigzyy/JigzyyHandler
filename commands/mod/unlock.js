@@ -21,7 +21,7 @@ module.exports = {
                 allow: ['ATTACH_FILES'],
                 allow: ['ADD_REACTIONS'],
             },
-        ]);
+        ],);
         const embed = new MessageEmbed()
             .setAuthor(`Xcel Channel Updates`, message.guild.iconURL())
             .setTitle("Lockdown deactivated!")
