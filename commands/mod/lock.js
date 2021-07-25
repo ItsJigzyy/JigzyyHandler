@@ -21,7 +21,6 @@ module.exports = {
                 id: '714190667558944849',
                 allow: ['READ_MESSAGES'],
                 allow: ['VIEW_CHANNEL'],
-                allow: ['READ_MESSAGE_HISTORY'],
             },
         ],);
         const embed = new MessageEmbed()
