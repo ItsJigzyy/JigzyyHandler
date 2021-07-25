@@ -15,11 +15,11 @@ module.exports = {
             {
                 id: '714190667558944849',
                 allow: ['SEND_MESSAGES'],
-                allow: ['VIEW_CHANNEL'],
                 allow: ['READ_MESSAGES'],
                 allow: ['READ_MESSAGE_HISTORY'],
                 allow: ['ATTACH_FILES'],
                 allow: ['ADD_REACTIONS'],
+                allow: ['VIEW_CHANNEL'],
             },
         ],);
         const embed = new MessageEmbed()
