@@ -14,14 +14,14 @@ module.exports = {
         message.channel.overwritePermissions([
             {
                 id: '714190667558944849',
-                allow: ['SEND_MESSAGES'],
-                allow: ['READ_MESSAGES'],
-                allow: ['READ_MESSAGE_HISTORY'],
-                allow: ['ATTACH_FILES'],
-                allow: ['ADD_REACTIONS'],
-                allow: ['VIEW_CHANNEL'],
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true,
+                READ_MESSAGE_HISTORY: true,
+                ATTACH_FILES: true,
+                ADD_REACTIONS: true,
+                VIEW_CHANNEL: true
             },
-        ],);
+        ]);
         const embed = new MessageEmbed()
             .setAuthor(`Xcel Channel Updates`, message.guild.iconURL())
             .setTitle("Lockdown deactivated!")

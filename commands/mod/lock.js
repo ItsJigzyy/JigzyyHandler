@@ -14,14 +14,14 @@ module.exports = {
         message.channel.overwritePermissions([
             {
                 id: '714190667558944849',
-                deny: ['SEND_MESSAGES'],
-                deny: ['ADD_REACTIONS'],
+                SEND_MESSAGES: false,
+                ADD_REACTIONS: false
             },
             {
                 id: '714190667558944849',
-                allow: ['READ_MESSAGES'],
-                allow: ['VIEW_CHANNEL'],
-                allow: ['READ_MESSAGE_HISTORY'],
+                READ_MESSAGES: true,
+                VIEW_CHANNEL: true,
+                READ_MESSAGE_HISTORY: true
             },
         ],);
         const embed = new MessageEmbed()

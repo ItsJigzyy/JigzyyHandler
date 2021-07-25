@@ -1,7 +1,7 @@
 module.exports = {
     name: 'Apply',
     aliases: ['Ap'],
-    category: 'Mod',
+    category: 'Core',
     utilisation: '{prefix}apply',
 
     async execute(client, message, args) {
