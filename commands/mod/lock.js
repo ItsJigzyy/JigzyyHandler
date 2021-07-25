@@ -16,6 +16,9 @@ module.exports = {
                 id: '714190667558944849',
                 deny: ['SEND_MESSAGES'],
                 deny: ['ADD_REACTIONS'],
+            },
+            {
+                id: '714190667558944849',
                 allow: ['READ_MESSAGES'],
                 allow: ['VIEW_CHANNEL'],
                 allow: ['READ_MESSAGE_HISTORY'],
