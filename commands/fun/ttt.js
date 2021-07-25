@@ -6,15 +6,10 @@ module.exports = {
 
     async execute(client, message, args) {
 
-        const { MessageEmbed } = require("discord.js");
-        const { tictactoe } = require('reconlx')
+        const ttt = require("discord.js-tictactoe")
+        const embed_color = "#2C2F33"
+        const start_cmd = "ttt"
+        ttt.run(client, prefix, embed_color, start_cmd)
 
-        const member = message.mentions.members.first()
-        if (!member) return message.channel.send('Please specify a member')
-
-        new tictactoe({
-            player_two: member,
-            message: message
-        })
     }
 }
