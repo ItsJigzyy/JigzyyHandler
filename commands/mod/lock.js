@@ -13,7 +13,7 @@ module.exports = {
             }
             message.channel.overwritePermissions([
               {
-                 id: message.guild.id,
+                 id: '714190667558944849',
                  deny : ['SEND_MESSAGES'],
               },
              ],);
@@ -22,8 +22,7 @@ module.exports = {
             .setTitle("Initiating lockdown!")
             .setDescription(`🔒 ${message.channel} has been Locked 🔒`)
             .setColor("#ff0000")
-            .setFooter(`Lockdown authorised by ${message.author}`)
-            .setImage("https://tenor.com/view/close-the-door-the-invisible-man-lock-the-door-shut-the-door-secure-the-door-gif-18790343")
+            .setFooter(`Lockdown authorised by ${message.author.tag}`)
             
             await message.channel.send(embed);
             message.delete();

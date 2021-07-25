@@ -1,7 +1,7 @@
 module.exports = {
     name: 'Suggest',
     aliases: ['sgest'],
-    category: 'Mod',
+    category: 'Infos',
     utilisation: '{prefix}suggest <suggestion>',
 
     async execute(client, message, args) {
