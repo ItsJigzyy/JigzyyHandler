@@ -65,13 +65,6 @@ module.exports = {
             if (Author.first().content == 'cancel') return message.channel.send('Embed Generator Cancelled.')
             if (Author.first().content !== 'skip' && Author.first().content !== 'cancel') embed.setAuthor(Author.first().content);
 
-            //===============================================================================================
-            // Getting TimeStamp
-            message.channel.send("So, Do you want your embed to have any TimeStamp? Reply `Yes` or `no`  *[Cap sensitive]*");
-            let TimeStamp = await message.channel.awaitMessages(filter, options);
-            if (TimeStamp.first().content == 'cancel') return message.channel.send('Embed Generator Cancelled.')
-            if (TimeStamp.first().content !== 'yes') embed.setTimestamp();
-
             message.channel.send(embed)
         } catch (error) {
             console.error(error);
