@@ -287,15 +287,17 @@ client.on('message', async function (message) {
         // block a user
         if (message.content.startsWith(`${config.prefix}block`)) {
             var args = message.content.split(" ").slice(1)
+            async function end(userID) {
+            let u = await client.users.fetch(userID);
             let reason = args.join(" ");
             if (!reason) reason = `Unspecified.`
             let user = client.users.fetch(support.targetID); // djs want a string here
             const blockedLog = new Discord.MessageEmbed()
                 .setColor("000000")
-                .setDescription(`${user.tag} blacklisted from ModMail`)
+                .setDescription(`${u.username} blacklisted from ModMail`)
                 .addField("Ticket:", `<#${message.channel.id}>`, true)
                 .addField("Reason:", reason, true)
-                .setFooter(`Do '$unblock ${user.id}' to unblacklist`)
+                .setFooter(`Do '$unblock ${userID}' to unblacklist`)
             supportServer.channels.cache.get(config.log).send({ embed: blockedLog });
 
             let isBlock = await table.get(`isBlocked${support.targetID}`);
@@ -307,6 +309,7 @@ client.on('message', async function (message) {
             message.channel.send({ embed: c });
             return;
         }
+    }
 
         // complete
         if (message.content.toLowerCase() === `${config.prefix}complete`) {
