@@ -163,7 +163,7 @@ client.on('message', async function (message) {
 
             const UserSend = new MessageEmbed()
                 .setAuthor(`${author.tag}`)
-                .setTitle(`Thank you for contacting the RGN support team, we'll reply as soon as possible!`)
+                .setTitle(`Thank you for contacting the EXL support team, we'll reply as soon as possible!`)
                 .setDescription(`While you wait for a response, please explain the reason for opening the ticket so we can help resolve any issues sooner`)
                 .setColor("GREEN")
                 .setFooter(`Your ticket ID is #${actualticket}`)
