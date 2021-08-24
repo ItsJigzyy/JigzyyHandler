@@ -289,7 +289,7 @@ client.on('message', async function (message) {
             var args = message.content.split(" ").slice(1)
             let reason = args.join(" ");
             if (!reason) reason = `Unspecified.`
-            let user = client.users.fetch(`${support.targetID}`); // djs want a string here
+            let user = client.users.fetch(support.targetID); // djs want a string here
             const blockedLog = new Discord.MessageEmbed()
                 .setColor("000000")
                 .setDescription(`${user.tag} blacklisted from ModMail`)
