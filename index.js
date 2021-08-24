@@ -22,8 +22,7 @@ client.on('guildMemberAdd', member => {
     if (!channel) return message.channel.send("Cannot find the welcome channel or an error has occured :confused:");
     let WelcomeEmbed = new MessageEmbed()
         .setColor('RANDOM')
-        .setAuthor(`${member.user.tag} has joined the server!`)
-        .setDescription(`Hey, welcome to Xcel. Go look around :grin:`)
+        .setDescription(`Hey <@${member.user.id}>, welcome to EXL League. Go look around :grin:`)
         .setFooter(`Xcel League`)
         .setTimestamp()
     // \`\`\`css\n${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}\`\`\`
@@ -36,8 +35,8 @@ client.on('guildMemberRemove', member => {
     if (!channel) return message.channel.send("Cannot find the leave channel or an error has occured :confused:");
     let LeaveEmbed = new MessageEmbed()
         .setColor('RANDOM')
-        .setAuthor(`${member.user.tag} has left the server!`)
-        .setDescription(`We'll miss you, make sure to come back one day. 🙂💕`)
+        
+        .setDescription(`We'll miss you, <@${member.user.id}>. Make sure to come back one day. 🙂💕`)
         .setFooter(`Xcel League`)
         .setTimestamp()
     // \`\`\`css\n${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}\`\`\`
@@ -284,33 +283,6 @@ client.on('message', async function (message) {
             return client.users.cache.get(support.targetID).send("Hi! Your ticket isn't paused anymore. We're ready to continue!");
         }
 
-        // block a user
-        if (message.content.startsWith(`${config.prefix}block`)) {
-            var args = message.content.split(" ").slice(1)
-            let u = await client.users.fetch(userID);
-            let reason = args.join(" ");
-            if (!reason) reason = `Unspecified.`
-            async function end(userID) {
-            let user = client.users.fetch(support.targetID); // djs want a string here
-            const blockedLog = new Discord.MessageEmbed()
-                .setColor("000000")
-                .setDescription(`${u.username} blacklisted from ModMail`)
-                .addField("Ticket:", `<#${message.channel.id}>`, true)
-                .addField("Reason:", reason, true)
-                .setFooter(`Do '$unblock ${userID}' to unblacklist`)
-            supportServer.channels.cache.get(config.log).send({ embed: blockedLog });
-
-            let isBlock = await table.get(`isBlocked${support.targetID}`);
-            if (isBlock === true) return message.channel.send("The user is already blocked.")
-            await table.set(`isBlocked${support.targetID}`, true);
-            var c = new Discord.MessageEmbed()
-                .setDescription(":x: The user has been blocked from the modmail. You may now close the ticket or unblock them to continue.")
-                .setColor("RED").setTimestamp()
-            message.channel.send({ embed: c });
-            return;
-        }
-    }
-
         // complete
         if (message.content.toLowerCase() === `${config.prefix}complete`) {
             var embed = new Discord.MessageEmbed()
@@ -323,7 +295,7 @@ client.on('message', async function (message) {
         async function end(userID) {
             let actualticket = await table.get("ticket");
             message.channel.delete()
-            let u = await client.users.fetch(userID);
+            const u = await client.users.fetch(userID);
             let end_log = new Discord.MessageEmbed()
                 .setColor("RED").setAuthor(u.tag, u.avatarURL())
                 .setDescription(`Ticket #${actualticket} closed.\nUser: ${u.username}\nID: ${userID}`)
@@ -331,6 +303,30 @@ client.on('message', async function (message) {
             await table.delete(`support_${userID}`);
             supportServer.channels.cache.get(config.log).send({ embed: end_log });
             return client.users.cache.get(support.targetID).send(`Thanks for getting in touch with us. If you wish to open a new ticket, feel free to message me.\nYour ticket #${actualticket} has been closed.`)
+        }
+
+        // block a user
+        if (message.content.startsWith(`${config.prefix}block`)) {
+            var args = message.content.split(" ").slice(1)
+            let reason = args.join(" ");
+            if (!reason) reason = `Unspecified.`
+            let user = client.users.fetch(support.targetID); // djs want a string here
+            const blockedLog = new Discord.MessageEmbed()
+                .setColor("000000")
+                .setDescription(`${u.username} blacklisted from ModMail`)
+                .addField("Ticket:", `<#${message.channel.id}>`, true)
+                .addField("Reason:", reason, true)
+                .setFooter(`Do '$unblock ${support.targetID}' to unblacklist`)
+            supportServer.channels.cache.get(config.log).send({ embed: blockedLog });
+
+            let isBlock = await table.get(`isBlocked${support.targetID}`);
+            if (isBlock === true) return message.channel.send("The user is already blocked.")
+            await table.set(`isBlocked${support.targetID}`, true);
+            var c = new Discord.MessageEmbed()
+                .setDescription(":x: The user has been blocked from the modmail. You may now close the ticket or unblock them to continue.")
+                .setColor("RED").setTimestamp()
+            message.channel.send({ embed: c });
+            return;
         }
 
         if (message.content.startsWith(`${config.prefix}unblock`)) {
