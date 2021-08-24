@@ -309,12 +309,12 @@ client.on('message', async function (message) {
         if (message.content.startsWith(`${config.prefix}block`)) {
             var args = message.content.split(" ").slice(1)
             let reason = args.join(" ");
-            const u = await client.users.fetch(userID);
+           
             if (!reason) reason = `Unspecified.`
             let user = client.users.fetch(support.targetID); // djs want a string here
             const blockedLog = new Discord.MessageEmbed()
                 .setColor("000000")
-                .setDescription(`${u.username} blacklisted from ModMail`)
+                .setDescription(`User blacklisted from ModMail`)
                 .addField("Ticket:", `<#${message.channel.id}>`, true)
                 .addField("Reason:", reason, true)
                 .setFooter(`Do '$unblock ${support.targetID}' to unblacklist`)
