@@ -287,10 +287,10 @@ client.on('message', async function (message) {
         // block a user
         if (message.content.startsWith(`${config.prefix}block`)) {
             var args = message.content.split(" ").slice(1)
-            async function end(userID) {
             let u = await client.users.fetch(userID);
             let reason = args.join(" ");
             if (!reason) reason = `Unspecified.`
+            async function end(userID) {
             let user = client.users.fetch(support.targetID); // djs want a string here
             const blockedLog = new Discord.MessageEmbed()
                 .setColor("000000")
