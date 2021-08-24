@@ -309,6 +309,7 @@ client.on('message', async function (message) {
         if (message.content.startsWith(`${config.prefix}block`)) {
             var args = message.content.split(" ").slice(1)
             let reason = args.join(" ");
+            const u = await client.users.fetch(userID);
             if (!reason) reason = `Unspecified.`
             let user = client.users.fetch(support.targetID); // djs want a string here
             const blockedLog = new Discord.MessageEmbed()
