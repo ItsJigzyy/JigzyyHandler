@@ -153,7 +153,7 @@ client.on('message', async function (message) {
                 VIEW_CHANNEL: false
             });
 
-            let author = message.author;
+            const author = message.author;
             const newTicket = new Discord.MessageEmbed()
                 .setColor("GREEN")
                 .setAuthor(author.tag, author.avatarURL({ dynamic: true }))
@@ -283,7 +283,7 @@ client.on('message', async function (message) {
             message.channel.send({ embed: c });
             return client.users.cache.get(support.targetID).send("Hi! Your ticket isn't paused anymore. We're ready to continue!");
         }
-        let author2 = message.author;
+
         // block a user
         if (message.content.startsWith(`${config.prefix}block`)) {
             var args = message.content.split(" ").slice(1)
@@ -292,10 +292,10 @@ client.on('message', async function (message) {
             let user = client.users.fetch(`${support.targetID}`); // djs want a string here
             const blockedLog = new Discord.MessageEmbed()
                 .setColor("000000")
-                .setDescription(`${author2} blacklisted from ModMail`)
+                .setDescription(`${user.tag} blacklisted from ModMail`)
                 .addField("Ticket:", `<#${message.channel.id}>`, true)
                 .addField("Reason:", reason, true)
-                .setFooter(`Do '$unblock ${author2.id}' to unblacklist`)
+                .setFooter(`Do '$unblock ${user.id}' to unblacklist`)
             supportServer.channels.cache.get(config.log).send({ embed: blockedLog });
 
             let isBlock = await table.get(`isBlocked${support.targetID}`);
