@@ -1,7 +1,8 @@
 const fs = require('fs');
 const discord = require('discord.js');
 const Discord = require("discord.js");
-const client = new discord.Client({ disableMentions: 'everyone' });
+const { Client, Intents, MessageEmbed } = require('discord.js');
+const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS], disableMentions: 'everyone' });
 
 const { Player } = require('discord-player');
 
@@ -15,14 +16,12 @@ client.emotes = client.config.emojis;
 client.filters = client.config.filters;
 client.commands = new discord.Collection();
 
-const { MessageEmbed } = require("discord.js");
-
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(ch => ch.name === '🤝welcomes🤝');
     if (!channel) return message.channel.send("Cannot find the welcome channel or an error has occured :confused:");
     let WelcomeEmbed = new MessageEmbed()
         .setColor('RANDOM')
-        .setDescription(`Hey <@${member.user.id}>, welcome to EXL League. Go look around :grin:`)
+        .setDescription(`Hey <@${member.user.id}>, welcome to the Xcel Server. Have a look around :grin:`)
         .setFooter(`Xcel League`)
         .setTimestamp()
     // \`\`\`css\n${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}\`\`\`

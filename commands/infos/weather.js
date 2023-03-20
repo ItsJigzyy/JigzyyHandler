@@ -8,6 +8,7 @@ module.exports = {
 
         const { MessageEmbed } = require("discord.js");
         const weather = require('weather-js');
+        const Discord = require("discord.js")
 
         weather.find({ search: args.join(" "), degreeType: 'F' }, function (error, result) {
             // 'C' can be changed to 'F' for farneheit results
@@ -19,7 +20,7 @@ module.exports = {
             var current = result[0].current;
             var location = result[0].location;
 
-            const weatherinfo = new MessageEmbed()
+            const weatherinfo = new Discord.MessageEmbed()
                 .setDescription(`**${current.skytext}**`)
                 .setAuthor(`Weather forecast for ${current.observationpoint}`)
                 .setThumbnail(current.imageUrl)

@@ -25,6 +25,7 @@
     "figlet": "^1.5.0",
     "fs": "0.0.1-security",
     "get-artist-title": "^1.3.1",
+    "heroku": "^7.69.1",
     "lodash": "^4.17.21",
     "lodash._baseflatten": "^4.2.0",
     "lyrics-finder": "^21.7.0",
@@ -36,6 +37,7 @@
     "node-opus": "^0.3.3",
     "node-pre-gyp": "^0.17.0",
     "node-superfetch": "^0.2.3",
+    "npm-git-install": "^0.3.0",
     "opusscript": "0.0.8",
     "os": "^0.1.1",
     "quick.db": "^7.1.3",
@@ -46,7 +48,6 @@
     "youtube-sr": "^4.0.8",
     "ytdl-core": "^4.8.3"
   },
-  "devDependencies": {},
   "keywords": [],
   "license": "ISC",
   "description": "off: ':x:',     error: ':warning:',     queue: ':bar_chart:',     music: ':musical_note:',     success: ':white_check_mark:',"
