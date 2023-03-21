@@ -1,6 +1,6 @@
 module.exports = {
     name: 'Calculator',
-    aliases: ['Calc'],
+    aliases: ['calc'],
     category: 'Infos',
     utilisation: '{prefix}calculator',
 

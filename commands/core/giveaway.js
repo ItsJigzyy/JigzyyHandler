@@ -6,6 +6,7 @@ module.exports = {
 
    async execute(client, message, args) {
 
+    const { MessageEmbed } = require("discord.js");
 
 if (message.member.hasPermission('ADMINISTRATOR')) {
 
