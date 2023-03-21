@@ -1,7 +1,7 @@
 {
   "engines": {
-    "node": "12.x",
-    "npm": "*"
+    "node": "18.15.0",
+    "npm": "9.6.2"
   },
   "name": "xcelrevamped",
   "main": "index.js",
