@@ -17,6 +17,7 @@ client.emotes = client.config.emojis;
 client.filters = client.config.filters;
 client.commands = new discord.Collection();
 
+
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(ch => ch.name === '╹🤝╻welcomes');
     if (!channel) return message.channel.send("Cannot find the welcome channel or an error has occured :confused:");
