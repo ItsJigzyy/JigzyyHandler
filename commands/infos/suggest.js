@@ -8,7 +8,7 @@ module.exports = {
 
         const { MessageEmbed } = require("discord.js");
 
-        const SuggestChannel = client.channels.cache.get('841427656138162186'); // ID of channel you want to suggest to
+        const SuggestChannel = client.channels.cache.get('1086983094009090058'); // ID of channel you want to suggest to
         const suggestMessage = args.join(" ");
 
         message.delete().catch(O_o => { });

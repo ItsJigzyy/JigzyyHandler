@@ -18,12 +18,12 @@ client.filters = client.config.filters;
 client.commands = new discord.Collection();
 
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.find(ch => ch.name === '🤝welcomes🤝');
+    const channel = member.guild.channels.cache.find(ch => ch.name === '╹🤝╻welcomes');
     if (!channel) return message.channel.send("Cannot find the welcome channel or an error has occured :confused:");
     let WelcomeEmbed = new MessageEmbed()
         .setColor('RANDOM')
-        .setDescription(`Hey <@${member.user.id}>, welcome to the Xcel Server. Have a look around :grin:`)
-        .setFooter(`Xcel League`)
+        .setDescription(`Hey <@${member.user.id}>, welcome to JigzDupes. Have a look around :grin:`)
+        .setFooter(`JigzDupes`)
         .setTimestamp()
     // \`\`\`css\n${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}\`\`\`
 
@@ -31,13 +31,13 @@ client.on('guildMemberAdd', member => {
 })
 
 client.on('guildMemberRemove', member => {
-    const channel = member.guild.channels.cache.find(ch => ch.name === '👋goodbyes👋');
+    const channel = member.guild.channels.cache.find(ch => ch.name === '╹👋╻goodbyes');
     if (!channel) return message.channel.send("Cannot find the leave channel or an error has occured :confused:");
     let LeaveEmbed = new MessageEmbed()
         .setColor('RANDOM')
         
-        .setDescription(`We'll miss you, <@${member.user.id}>. Make sure to come back one day. 🙂💕`)
-        .setFooter(`Xcel League`)
+        .setDescription(`Goodbye, <@${member.user.id}>. We'll miss you 💕`)
+        .setFooter(`JigzDupes`)
         .setTimestamp()
     // \`\`\`css\n${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}\`\`\`
 
@@ -163,7 +163,7 @@ client.on('message', async function (message) {
 
             const UserSend = new MessageEmbed()
                 .setAuthor(`${author.tag}`)
-                .setTitle(`Thank you for contacting the EXL support team, we'll reply as soon as possible!`)
+                .setTitle(`Thank you for contacting the JigzDupes support team, we'll reply as soon as possible!`)
                 .setDescription(`While you wait for a response, please explain the reason for opening the ticket so we can help resolve any issues sooner`)
                 .setColor("GREEN")
                 .setFooter(`Your ticket ID is #${actualticket}`)

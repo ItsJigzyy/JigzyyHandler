@@ -9,9 +9,9 @@ module.exports = {
     },
 
     discord: {
-        token: 'ODQxOTM3MDQwODgyNzk0NDk2.YJuA-A.Brjtlw-QRsPi0wADiXt0U4AnUMA',
+        token: 'MTA4NzY1Mjg3NTU3MzkyMzk1MA.G7Xv-b.3dSjQ4RkH4s5qIPfzCV05l7hLJl7AyClEkwtDc',
         prefix: '$',
-        activity: 'Xcel chats | $help',
+        activity: 'Jigzyy build | DM for help',
         
     },
 

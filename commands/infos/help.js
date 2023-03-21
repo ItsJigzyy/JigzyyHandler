@@ -17,7 +17,7 @@ module.exports = {
 
             HelpEmbed = new MessageEmbed()
                 .setColor('#ff331f')
-                .setAuthor("Xcel Help Hub")
+                .setAuthor("Help Hub")
                 .setDescription(`For more information about a command, do ${client.config.discord.prefix}help <command name here>`)
                 .addField(`Bot:`, `${infos}`)
                 .addField(`Backup:`, `${backups}`)
@@ -25,7 +25,7 @@ module.exports = {
                 .addField(`Fun:`, `${fun}`)
                 .addField(`Music:`, `${music}`)
                 .addField(`Custom Commands:`, `${custom}`)
-                .setFooter(`The all-new Xcel Bot`)
+                .setFooter(`JigzDupes`)
                 .setTimestamp(new Date())
 
             message.channel.send(HelpEmbed)
@@ -38,7 +38,7 @@ module.exports = {
 
             ExtraHelp = new MessageEmbed()
                 .setColor('#2C2F33')
-                .setAuthor("Xcel Help Hub")
+                .setAuthor("Help Hub")
                 .setDescription('Find information on the command provided\nMandatory arguments `[]`, optional arguments `<>`')
                 .addField(`Command:`, `${command.name}`, true)
                 .addField(`Category:`, `${command.category}`, true)

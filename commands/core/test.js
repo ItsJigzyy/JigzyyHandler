@@ -6,6 +6,6 @@ module.exports = {
 
    async execute(client, message, args) {
 
-message.channel.send(`${message.author}, I'm online! *Until Jigzyy does something wrong...* :sunglasses: `)
+message.channel.send(`${message.author}, I am online with a ping of **${client.ws.ping}ms**!`)
    },
 };

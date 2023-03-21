@@ -17,7 +17,7 @@ module.exports = {
             JigzyyEmbed = new MessageEmbed()
                 .setDescription(`\`\`\` ${txt.trimRight()} \`\`\``)
                 .setColor("#2C2F33")
-                .setFooter("Owner of all things Eris")
+                .setFooter("Jigzyy")
 
             message.channel.send(JigzyyEmbed);
         });
