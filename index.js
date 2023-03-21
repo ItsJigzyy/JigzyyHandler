@@ -5,6 +5,7 @@ const { Client, Intents, MessageEmbed } = require('discord.js');
 const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS], disableMentions: 'everyone' });
 
 const { Player } = require('discord-player');
+const cheerio = require('cheerio');
 
 const db = require("quick.db"); // npm i quick.db
 const config = require("./config.json");
