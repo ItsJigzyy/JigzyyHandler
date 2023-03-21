@@ -5,6 +5,11 @@ module.exports = {
     utilisation: '{prefix}nowplaying',
 
     execute(client, message) {
+
+        const { Player } = require('discord-player');
+        client.player = new Player(client);
+
+
         if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel!`);
 
         if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel!`);
