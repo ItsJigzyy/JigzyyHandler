@@ -17,7 +17,7 @@ module.exports = {
 
             .setAuthor(`Suggested by: ${message.author.tag}`)
             .setDescription(suggestMessage)
-            .setFooter("React with one of the emoji's to vote on it being added")
+            .setFooter("React below to make your vote")
             .setColor("#2C2F33")
 
         let msgEmbed = await SuggestChannel.send(suggestEmbed);
