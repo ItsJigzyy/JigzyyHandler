@@ -39,6 +39,7 @@ module.exports = {
                 ],
                 thumbnail: { url: track.thumbnail },
                 timestamp: new Date(),
+                
             },
         });
     },
