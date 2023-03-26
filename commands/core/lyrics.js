@@ -1,7 +1,7 @@
 module.exports = {
     name: 'lyrics',
     aliases: ["ly"],
-    category: 'Music',
+    category: 'Core',
     utilisation: '{prefix}lyrics [Artist name]',
 
     async execute(client, message, args, searcher) {
