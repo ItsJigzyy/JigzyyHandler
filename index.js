@@ -1,4 +1,3 @@
-const fs = require('fs');
 const discord = require('discord.js');
 const Discord = require("discord.js");
 const { Client, Intents, MessageEmbed } = require('discord.js');
