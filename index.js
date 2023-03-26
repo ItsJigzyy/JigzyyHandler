@@ -1,20 +1,15 @@
+const fs = require('fs')
 const discord = require('discord.js');
 const Discord = require("discord.js");
 const { Client, Intents, MessageEmbed } = require('discord.js');
 const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS], disableMentions: 'everyone' });
-
-const { Player } = require('discord-player');
 const cheerio = require('cheerio');
-
 const db = require("quick.db"); // npm i quick.db
 const config = require("./config.json");
 const table = new db.table("Tickets");
-
-client.player = new Player(client);
 client.config = require('./config/bot');
 client.emotes = client.config.emojis;
 client.commands = new discord.Collection();
-
 
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(ch => ch.name === '╹🤝╻welcomes');
