@@ -16,7 +16,7 @@ module.exports = {
             const backups = message.client.commands.filter(x => x.category == 'Backup').map((x) => '`' + x.name + '`').join(', ');
 
             HelpEmbed = new MessageEmbed()
-                .setColor('#ff331f')
+                .setColor('#FFFFFF')
                 .setAuthor("Help Hub")
                 .setDescription(`For more information about a command, do ${client.config.discord.prefix}help <command name here>`)
                 .addField(`Bot:`, `${infos}`)
@@ -37,7 +37,7 @@ module.exports = {
             if (!command) return message.channel.send(`${client.emotes.error} I can't find this command?`);
 
             ExtraHelp = new MessageEmbed()
-                .setColor('#2C2F33')
+                .setColor('#FFFFFF')
                 .setAuthor("Help Hub")
                 .setDescription('Find information on the command provided\nMandatory arguments `[]`, optional arguments `<>`')
                 .addField(`Command:`, `${command.name}`, true)
