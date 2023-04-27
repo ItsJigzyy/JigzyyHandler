@@ -43,7 +43,7 @@ module.exports = {
                     };
                     const guess = await message.channel.awaitMessages(filter, {
                         max: 1,
-                        time: 30000
+                        time: 60000
                     });
                     if (!guess.size) {
                         await message.reply('Sorry, time is up!');
