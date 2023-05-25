@@ -1,7 +1,30 @@
 const discord = require('discord.js');
+const db = require('quick.db');
+const { MessageEmbed } = require("discord.js");
 
 module.exports = async (client, message) => {
     if (message.author.bot || message.channel.type === 'dm') return;
+
+    // Checking for afk messages:
+    if (db.has(`afk-${message.author.id}+${message.guild.id}`)) {
+        const info = db.get(`afk-${message.author.id}+${message.guild.id}`)
+        await db.delete(`afk-${message.author.id}+${message.guild.id}`)
+        message.channel.send(
+            new MessageEmbed()
+                .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+                .setDescription(`Welcome back!\nAFK Status: **OFF**`)
+                .setColor('WHITE')
+        ) 
+    } 
+
+    // Checking for mentions:
+    const mentionEmbed = new MessageEmbed()
+    if (message.mentions.members.first()) {
+        if (db.has(`afk-${message.mentions.members.first().id}+${message.guild.id}`)) {
+            message.channel.send(`${message.mentions.members.first()} is AFK 🚫\nReason: `+db.get(`afk-${message.mentions.members.first().id}+${message.guild.id}`))
+            //message.channel.send(db.get(`afk-${message.mentions.members.first().id}+${message.guild.id}`))
+        } else return;
+    }
 
     const prefix = client.config.discord.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);

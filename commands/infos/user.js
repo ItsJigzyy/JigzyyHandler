@@ -26,45 +26,51 @@ module.exports = {
             VERIFIED_DEVELOPER: 'Verified Bot Developer'
         };
 
-        const member = message.mentions.members.first();
+        const user = msg.mentions.users.first() || msg.author;
+        const member = msg.guild.members.cache.get(user.id);
+        if (user.bot !== true) {
+            msg.channel.startTyping();
 
-        if (!member) return message.reply("You haven't mentioned a user for me to display...")
+            if (!member) return message.reply("You haven't mentioned a user for me to display...")
 
-        const roles = member.roles.cache
-            .sort((a, b) => b.position - a.position)
-            .map(role => role.toString())
-            .slice(0, -1);
+            const roles = member.roles.cache
+                .sort((a, b) => b.position - a.position)
+                .map(role => role.toString())
+                .slice(0, -1);
 
-        const userStatus = {
-            online: "Online",
-            idle: "Idle/Inactive",
-            dnd: "Busy/Do Not Disturb",
-            offline: "Unavailable/Offline"
+            const userStatus = {
+                online: "Online",
+                idle: "Idle/Inactive",
+                dnd: "Busy/Do Not Disturb",
+                offline: "Unavailable/Offline"
+            }
+
+            var presence = member.presence.activities.length ? member.presence.activities.filter(x => x.type === "PLAYING") : null;
+            const userFlags = member.user.flags.toArray();
+            const embed = new MessageEmbed()
+                .setThumbnail(user.user.displayAvatarURL({ dynamic: true, size: 512 }))
+                .setColor(user.displayHexColor || '#ff331f')
+                .addField('User', [
+                    `**❯ Username:** ${member.user.username}`,
+                    `**❯ Discriminator:** ${member.user.discriminator}`,
+                    `**❯ ID:** ${member.id}`,
+                    `**❯ Flags:** ${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}`,
+                    `**❯ Avatar:** [Link to avatar](${member.user.displayAvatarURL({ dynamic: true })})`,
+                    `**❯ Time Created:** ${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}`,
+                    `**❯ Status:** ${userStatus[member.presence.status]}`,
+                    `**❯ Game:** ${presence && presence.length ? presence[0].name : 'None'}`,
+                    `\u200b`
+                ])
+                .addField('Member', [
+                    `**❯ Highest Role:** ${member.roles.highest.id === message.guild.id ? 'None' : member.roles.highest.name}`,
+                    `**❯ Server Join Date:** ${moment(member.joinedAt).format('LL LTS')}`,
+                    `**❯ Hoist Role:** ${member.roles.hoist ? member.roles.hoist.name : 'None'}`,
+                    `**❯ Roles [${roles.length}]:** ${roles.length < 20 ? roles.join(', ') : 'None'}`,
+                    `\u200b`
+                ]);
+            return message.channel.send(embed).console.log()
+            msg.channel.stopTyping()
+
         }
-
-        var presence = member.presence.activities.length ? member.presence.activities.filter(x => x.type === "PLAYING") : null;
-        const userFlags = member.user.flags.toArray();
-        const embed = new Discord.MessageEmbed()
-            .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
-            .setColor(member.displayHexColor || '#ff331f')
-            .addField('User', [
-                `**❯ Username:** ${member.user.username}`,
-                `**❯ Discriminator:** ${member.user.discriminator}`,
-                `**❯ ID:** ${member.id}`,
-                `**❯ Flags:** ${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}`,
-                `**❯ Avatar:** [Link to avatar](${member.user.displayAvatarURL({ dynamic: true })})`,
-                `**❯ Time Created:** ${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}`,
-                `**❯ Status:** ${userStatus[member.presence.status]}`,
-                `**❯ Game:** ${presence && presence.length ? presence[0].name : 'None'}`,
-                `\u200b`
-            ])
-            .addField('Member', [
-                `**❯ Highest Role:** ${member.roles.highest.id === message.guild.id ? 'None' : member.roles.highest.name}`,
-                `**❯ Server Join Date:** ${moment(member.joinedAt).format('LL LTS')}`,
-                `**❯ Hoist Role:** ${member.roles.hoist ? member.roles.hoist.name : 'None'}`,
-                `**❯ Roles [${roles.length}]:** ${roles.length < 20 ? roles.join(', ') : 'None'}`,
-                `\u200b`
-            ]);
-        return message.channel.send(embed);
     },
 };

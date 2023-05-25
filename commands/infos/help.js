@@ -14,6 +14,7 @@ module.exports = {
             const fun = message.client.commands.filter(x => x.category == 'Fun').map((x) => '`' + x.name + '`').join(', ');
             const custom = message.client.commands.filter(x => x.category == 'Custom').map((x) => '`' + x.name + '`').join(', ');
             const backups = message.client.commands.filter(x => x.category == 'Backup').map((x) => '`' + x.name + '`').join(', ');
+           // const owner = message.client.commands.filter(x => x.category == 'Owner').map((x) => '`' + x.name + '`').join(', ');
 
             HelpEmbed = new MessageEmbed()
                 .setColor('#FFFFFF')
@@ -23,7 +24,7 @@ module.exports = {
                 .addField(`Moderation:`, `${mod}`)
                 .addField(`Backup:`, `${backups}`)
                 .addField(`Fun:`, `${fun}`)
-                .addField(`Custom Commands:`, `${custom}`)
+                //.addField(`Owner:`, `${owner}`)
                 .setFooter(`JigzDupes`)
                 .setTimestamp(new Date())
 

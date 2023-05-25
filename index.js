@@ -7,21 +7,52 @@ const cheerio = require('cheerio');
 const db = require("quick.db"); // npm i quick.db
 const config = require("./config.json");
 const table = new db.table("Tickets");
+const Attachment = require("discord.js");
+const Captcha = require("@haileybot/captcha-generator");
+const { verify } = require('crypto');
 client.config = require('./config/bot');
 client.emotes = client.config.emojis;
 client.commands = new discord.Collection();
 
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.find(ch => ch.name === '╹🤝╻welcomes');
-    if (!channel) return message.channel.send("Cannot find the welcome channel or an error has occured :confused:");
-    let WelcomeEmbed = new MessageEmbed()
-        .setColor('RANDOM')
-        .setDescription(`Hey <@${member.user.id}>, welcome to JigzDupes. Have a look around :grin:`)
-        .setFooter(`JigzDupes`)
-        .setTimestamp()
-    // \`\`\`css\n${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}\`\`\`
 
-    channel.send(WelcomeEmbed).catch(err => console.log(err));
+    const welcome_channel_id = "1086986116189651056"
+    const welcomeChannel = member.guild.channels.cache.get(welcome_channel_id)
+    const verify_channel_id = "1087709484337614878"
+    const verifyChannel = member.guild.channels.cache.get(verify_channel_id)
+    const Unverified_role_id = "1086981725848080434"
+    let UnverifiedRole = member.guild.roles.cache.find(r => r.id === Unverified_role_id)
+    member.roles.add(UnverifiedRole)
+
+    let welcomeMsg = new MessageEmbed()
+        .setTitle(`New Member! 👋`)
+        .setDescription(`Welcome **${member.user.tag}**!\nPlease check ${verifyChannel} channel`)
+        .setColor("RANDOM")
+    welcomeChannel.send(welcomeMsg)
+    let captcha = new Captcha()
+    const attachment = new Discord.MessageAttachment(captcha.PNGStream, "captcha.png")
+    let verificationMsg = new MessageEmbed()
+        .setTitle(`Human Verification Required!`)
+        .setDescription("Hello there! I'm here to inform you that you need to verify yourself to gain access to the server.\nPlease type in the captcha shown below `Case sensitive | Upper-Case only`.\nThis message will self-destruct within **2 minutes**. If you still can't solve the captcha within the amount of time given, **please re-join the server!**")
+        .attachFiles(attachment)
+        .setImage(`attachment://captcha.png`)
+        .setColor("RED")
+    verifyChannel.send(verificationMsg)
+    const collector = new Discord.MessageCollector(verifyChannel, m => m.member.id === m.member.id, { time: 120000 });
+    collector.on("collect", m => {
+        if (m.content === captcha.value) {
+            let successMsg = new MessageEmbed()
+                .setTitle(`✅ Verification Complete`)
+                .setDescription(`You now have access to the rest of the server`)
+                .setFooter(`DM JigzDupes to open a ticket!`)
+                .setColor("GREEN")
+            verifyChannel.send(successMsg)
+            const verified_role_id = "1086981643702652950"
+            let verifiedRole = member.guild.roles.cache.find(r => r.id === verified_role_id)
+            member.roles.add(verifiedRole)
+            member.roles.remove(UnverifiedRole)
+        }
+    });
 })
 
 client.on('guildMemberRemove', member => {
@@ -29,7 +60,6 @@ client.on('guildMemberRemove', member => {
     if (!channel) return message.channel.send("Cannot find the leave channel or an error has occured :confused:");
     let LeaveEmbed = new MessageEmbed()
         .setColor('RANDOM')
-        
         .setDescription(`Goodbye, <@${member.user.id}>. We'll miss you 💕`)
         .setFooter(`JigzDupes`)
         .setTimestamp()
@@ -296,7 +326,7 @@ client.on('message', async function (message) {
         if (message.content.startsWith(`${config.prefix}block`)) {
             var args = message.content.split(" ").slice(1)
             let reason = args.join(" ");
-           
+
             if (!reason) reason = `Unspecified.`
             let user = client.users.fetch(support.targetID); // djs want a string here
             const blockedLog = new Discord.MessageEmbed()
@@ -334,8 +364,6 @@ client.on('message', async function (message) {
         }
     };
 });
-
-
 
 
 client.login(client.config.discord.token);
