@@ -1,6 +1,6 @@
 module.exports = {
     name: 'Jigzyy',
-    aliases: [],
+    aliases: ['jig'],
     category: 'Custom',
     utilisation: '{prefix}jigzyy',
 
@@ -19,8 +19,8 @@ module.exports = {
                 .setColor("#2C2F33")
                 .setFooter("Jigzyy")
 
-            message.channel.send(JigzyyEmbed);
+            message.channel.send({ embeds: [JigzyyEmbed] });
         });
 
     },
-};
+};  

@@ -1,10 +1,10 @@
 module.exports = {
     name: 'Ping',
-    aliases: [],
+    aliases: ['ms'],
     category: 'Infos',
     utilisation: '{prefix}ping',
 
     execute(client, message) {
-        message.channel.send(`Ping: **${client.ws.ping}ms**!`);
+        message.reply({ content: `Ping: **${client.ws.ping}ms**!` });
     },
-};
+};  

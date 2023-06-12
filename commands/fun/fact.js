@@ -16,7 +16,6 @@ module.exports = {
             .setTitle("Random Useless Facts:")
             .setColor(message.author.displayHexColor)
             .setDescription(text)
-            .setFooter("Did you learn something today?");
-        message.reply(Embed);
+        message.reply({ embeds: [Embed] });
     },
-};
+};  

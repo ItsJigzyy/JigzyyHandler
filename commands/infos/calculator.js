@@ -11,23 +11,33 @@ module.exports = {
         const math = require('mathjs');
 
 
-        if (!args[0]) return message.reply("Please provide a question.");
+        if (!args[0]) return message.reply({ content: "Please provide a question." });
 
         let resp;
 
         try {
             resp = math.evaluate(args.join(" "))
         } catch (e) {
-            return message.reply("Please provide a **valid** question.")
+            return message.reply({ content: "Please provide a **valid** question." })
         }
 
         const CalcEmbed = new MessageEmbed()
             .setColor('BLACK')
             .setTitle('Calculator')
-            .addField('Question:', `\`\`\`css\n${args.join('')}\`\`\``)
-            .addField('Answer:', `\`\`\`css\n${resp}\`\`\``)
+            .addFields(
+                {
+                    name: "Question:",
+                    value: `\`\`\`css\n${args.join('')}\`\`\``,
+                    inline: false,
+                },
+                {
+                    name: "Answer:",
+                    value: `\`\`\`css\n${resp}\`\`\``,
+                    inline: false,
+                },
+            )
 
-        message.reply(CalcEmbed);
+        message.reply({ embeds: [CalcEmbed] });
 
     },
-};
+};  

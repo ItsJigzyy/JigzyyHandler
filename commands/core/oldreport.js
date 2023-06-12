@@ -14,13 +14,13 @@ module.exports = {
         if (message.author.bot) return;
 
         const questions = [`What's the players GamerTag:`, `What's the players Discord:`, `Why are you reporting this player? (MnK, DDoS, Extreme Toxicity etc)`, `When did these events occur?`, `Do you have evidence to backup this accusation?`, `Did anyone else witness this happen?`, `Do you give permission for us to use this info against the accused player?`]; // <-- Questions here:
-        const dmChannel = await message.author.send("**If you feel like someone is cheating or you have suspicions about someone in one of our tournaments** \n *Please answer the questions below:*");
+        const dmChannel = await message.author.send({ content: "**If you feel like someone is cheating or you have suspicions about someone in one of our tournaments** \n *Please answer the questions below:*" });
         const collector = dmChannel.channel.createMessageCollector((msg) => message.author.id === msg.author.id);
         let i = 0;
         const res = [];
 
-        message.reply("Please check your DMs...")
-        dmChannel.channel.send(questions[0])
+        message.reply({ content: "Please check your DMs..." })
+        dmChannel.channel.send({ embeds: [questions[0]] })
 
         collector.on('collect', async (message) => {
             if (questions.length === i) return collector.stop('MAX');
@@ -29,7 +29,7 @@ module.exports = {
             i++;
             if (questions.length === i) return collector.stop('MAX');
             else {
-                dmChannel.channel.send(questions[i]);
+                dmChannel.channel.send({ embeds: [questions[i]] });
             }
         });
 
@@ -50,10 +50,10 @@ module.exports = {
 
 
 
-                await data.send(applyEmbed)
-                await message.author.send("Your report has been sent to BigFace :smile:")
+                await data.send({ embeds: [applyEmbed] })
+                await message.author.send({ content: "Your report has been sent to BigFace :smile:" })
             }
         })
 
     },
-};
+};  

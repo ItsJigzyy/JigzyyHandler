@@ -8,8 +8,8 @@ module.exports = {
 
         const { MessageEmbed } = require("discord.js");
 
-        message.channel.send("Paul says Hi", { files: ["./Paul.png"] });
+        message.channel.send({ content: "Paul says Hi", files: ["./Paul.png"] });
 
         message.delete().catch(O_o => { });
     },
-};
+};  

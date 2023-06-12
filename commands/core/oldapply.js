@@ -20,13 +20,13 @@ module.exports = {
             `What region are you from?`,
             `What is your availability on the weekends?`,
             `Are there any other qualifications that you think we should know about you while considering your application?`];
-        const dmChannel = await message.author.send("**Xcel is always looking to promote more people** \n *If you are interested, please answer the questions below:*");
+        const dmChannel = await message.author.send({ content: "**Xcel is always looking to promote more people** \n *If you are interested, please answer the questions below:*" });
         const collector = dmChannel.channel.createMessageCollector((msg) => message.author.id === msg.author.id);
         let i = 0;
         const res = [];
 
-        message.reply("Please check your DMs...")
-        dmChannel.channel.send(questions[0])
+        message.reply({ content: "Please check your DMs..." })
+        dmChannel.channel.send({ embeds: [questions[0]] })
 
         collector.on('collect', async (message) => {
             if (questions.length === i) return collector.stop('MAX');
@@ -35,7 +35,7 @@ module.exports = {
             i++;
             if (questions.length === i) return collector.stop('MAX');
             else {
-                dmChannel.channel.send(questions[i]);
+                dmChannel.channel.send({ embeds: [questions[i]] });
             }
         });
 
@@ -56,10 +56,10 @@ module.exports = {
 
 
 
-                await data.send(applyEmbed)
-                await message.author.send("Your application has been sent to Xcel Leadership :smile:")
+                await data.send({ embeds: [applyEmbed] })
+                await message.author.send({ content: "Your application has been sent to Xcel Leadership :smile:" })
             }
         })
 
     },
-};
+};  

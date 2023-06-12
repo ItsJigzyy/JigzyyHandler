@@ -5,6 +5,6 @@ module.exports = {
     utilisation: '{prefix}Fudgy',
 
     execute(client, message) {
-        message.channel.send(`https://discord.gg/fudgydarkrp`);
+        message.reply({ content: `https://discord.gg/fudgydarkrp` });
     },
-};
+};  

@@ -1,11 +1,12 @@
 module.exports = {
     name: 'User',
     aliases: ['whois'],
-    category: 'Infos',
+    category: 'Core',
     utilisation: '{prefix}user',
 
     execute(client, message, args) {
 
+        const msg = message
         const moment = require('moment');
         const { MessageEmbed } = require("discord.js");
         const Discord = require("discord.js")
@@ -29,9 +30,8 @@ module.exports = {
         const user = msg.mentions.users.first() || msg.author;
         const member = msg.guild.members.cache.get(user.id);
         if (user.bot !== true) {
-            msg.channel.startTyping();
 
-            if (!member) return message.reply("You haven't mentioned a user for me to display...")
+            if (!member) return message.reply({ content: "You haven't mentioned a user for me to display..." })
 
             const roles = member.roles.cache
                 .sort((a, b) => b.position - a.position)
@@ -48,7 +48,7 @@ module.exports = {
             var presence = member.presence.activities.length ? member.presence.activities.filter(x => x.type === "PLAYING") : null;
             const userFlags = member.user.flags.toArray();
             const embed = new MessageEmbed()
-                .setThumbnail(user.user.displayAvatarURL({ dynamic: true, size: 512 }))
+
                 .setColor(user.displayHexColor || '#ff331f')
                 .addField('User', [
                     `**❯ Username:** ${member.user.username}`,
@@ -68,8 +68,7 @@ module.exports = {
                     `**❯ Roles [${roles.length}]:** ${roles.length < 20 ? roles.join(', ') : 'None'}`,
                     `\u200b`
                 ]);
-            return message.channel.send(embed).console.log()
-            msg.channel.stopTyping()
+            return message.channel.send({ embeds: [embed] })
 
         }
     },

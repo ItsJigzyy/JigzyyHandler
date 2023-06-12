@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'bload',
+    name: 'Bload',
     aliases: ['load'],
     category: 'Backup',
     utilisation: '{prefix}bload <id>',
@@ -9,15 +9,15 @@ module.exports = {
         const backup = require('discord-backup');
         const { MessageEmbed } = require("discord.js");
 
-        if (!message.member.hasPermission('ADMINISTRATOR')) {
-            return message.channel.send(':x: You need to have Administator permissions to load a backup in this server!');
+        if (!message.member.permissions.has('ADMINISTRATOR')) {
+            return message.channel.send({ content: ':x: You need to have Administator permissions to load a backup in this server!' });
         }
 
         const backupID = args.join(' ');
 
         backup.fetch(backupID).then(() => {
 
-            message.channel.send(':warning: All the server channels, roles, and settings will be cleared. Do you want to continue? Send `confirm` or `cancel`!');
+            message.channel.send({ content: ':warning: All the server channels, roles, and settings will be cleared. Do you want to continue? Send `confirm` or `cancel`!' });
 
             const collector = message.channel.createMessageCollector((m) => m.author.id === message.author.id && ['confirm', 'cancel'].includes(m.content), {
                 time: 60000,
@@ -30,31 +30,31 @@ module.exports = {
 
                     backup.load(backupID, message.guild).then(() => {
 
-                        return message.author.send('Backup loaded successfully!');
+                        return message.author.send({ content: 'Backup loaded successfully!' });
 
                     }).catch((err) => {
 
                         if (err === 'No backup found')
-                            return message.channel.send(':x: No backup found for ID ' + backupID + '!');
+                            return message.channel.send({ content: ':x: No backup found for ID ' + backupID + '!' });
                         else
-                            return message.author.send(':x: An error occurred: ' + (typeof err === 'string') ? err : JSON.stringify(err));
+                            return message.author.send({ content: ':x: An error occurred: ' + (typeof err === 'string') ? err : JSON.stringify(err) });
 
                     });
 
                 } else {
-                    return message.channel.send(':x: Cancelled.');
+                    return message.channel.send({ content: ':x: Cancelled.' });
                 }
             })
 
             collector.on('end', (collected, reason) => {
                 if (reason === 'time')
-                    return message.channel.send(':x: Command timed out! Please retry.');
+                    return message.channel.send({ content: ':x: Command timed out! Please retry.' });
             })
 
         }).catch(() => {
-            return message.channel.send(':x: No backup found for ID ' + backupID + '!');
+            return message.channel.send({ content: ':x: No backup found for ID ' + backupID + '!' });
         });
 
 
     },
-};
+};  

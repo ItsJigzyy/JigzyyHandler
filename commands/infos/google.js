@@ -7,9 +7,9 @@ module.exports = {
 
         const query = encodeURIComponent(args.join(" "));
         const url = `https://www.google.com/search?q=${query}`;
-        if (!query) return message.reply("What would you like to Google?")
+        if (!query) return message.reply({ content: "What would you like to Google?" })
 
-        message.channel.send(`Here is the link to what you searched for:\n` + url);
+        message.reply({ content: `Here is the link to what you searched for:\n` + url });
 
     },
 };

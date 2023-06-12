@@ -9,18 +9,18 @@ module.exports = {
         const { MessageEmbed } = require("discord.js");
 
 
-        if (!message.member.hasPermission("KICK_MEMBERS") || !message.member.hasPermission("ADMINISTRATOR"))
-            return message.reply("You don't have permission to use this command!");
+        if (!message.member.permissions.has("KICK_MEMBERS") || !message.member.hasPermission("ADMINISTRATOR"))
+            return message.reply({ content: "You don't have permission to use this command!" });
 
         let user = message.mentions.users.first();
 
-        let member = message.guild.member(user);
+        let member = message.guild.members.cache.get(user);
         let reason = args.slice(1).join(" ");
 
-        if (!user) return message.reply("Please mention a user in the server.");
-        if (user.id === message.author.id) return message.reply("You can't kick yourself :man_facepalming:");
-        if (user.id === client.user.id) return message.reply("You can't kick me bitch!");
-        if (user.id === '713929311488311369') return message.reply("You can't kick my daddy! <:SovietPepe:844269658545586206>");
+        if (!user) return message.reply({ content: "Please mention a user in the server." });
+        if (user.id === message.author.id) return message.reply({ content: "You can't kick yourself :man_facepalming:" });
+        if (user.id === client.user.id) return message.reply({ content: "You can't kick me bitch!" });
+        if (user.id === '713929311488311369') return message.reply({ content: "You can't kick my daddy! <:SovietPepe:1097754298055659530>" });
 
         if (!reason) reason = "No reason provided.";
 
@@ -36,15 +36,10 @@ module.exports = {
                 .setThumbnail(`${user.displayAvatarURL({ dynamic: true })}`)
 
 
-            message.channel.send(kickEmbed)
-            // message.channel.send(`**${user.tag}** was kicked from the server for ${reason}!`);
+            message.channel.send({ embeds: [kickEmbed] })
+            // message.channel.send({ content: `**${user.tag}** was kicked from the server for ${reason}!` });
         }).catch(err => {
-            message.reply("I was unable to kick that member :confused:");
+            message.reply({ content: "I was unable to kick that member :confused:" });
         })
-
-
-
-
-
     },
-};
+};  

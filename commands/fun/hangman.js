@@ -1,6 +1,6 @@
 module.exports = {
     name: 'Hangman',
-    aliases: ['Hang'],
+    aliases: ['hang'],
     playing: new Set(),
     category: 'Fun',
     utilisation: '{prefix}hangman',
@@ -11,7 +11,7 @@ module.exports = {
         const { stripIndents } = require('common-tags');
         const urban = require('urban');
 
-        if (this.playing.has(message.channel.id)) return message.reply('Only one game may be occurring per channel.');
+        if (this.playing.has(message.channel.id)) return message.reply({ content: 'Only one game may be occurring per channel.' });
         this.playing.add(message.channel.id);
         try {
             urban.random().first(async json => {
@@ -41,12 +41,9 @@ module.exports = {
                         const choice = res.content.toLowerCase();
                         return res.author.id === message.author.id && !confirmation.includes(choice) && !incorrect.includes(choice);
                     };
-                    const guess = await message.channel.awaitMessages(filter, {
-                        max: 1,
-                        time: 60000
-                    });
+                    const guess = await message.channel.awaitMessages({ filter, max: 1, time: 60000 })
                     if (!guess.size) {
-                        await message.reply('Sorry, time is up!');
+                        await message.channel.send({ content: 'Sorry, time is up!' });
                         break;
                     }
                     const choice = guess.first().content.toLowerCase();
@@ -69,16 +66,12 @@ module.exports = {
                     }
                 }
                 this.playing.delete(message.channel.id);
-                if (word.length === confirmation.length || guessed) return message.reply(`You won, it was ${word}!`);
-                return message.reply(`Too bad... It was ${word}...`);
+                if (word.length === confirmation.length || guessed) return message.reply({ content: `You won, it was ${word}!` });
+                return message.reply({ content: `Too bad... It was ${word}...` });
             });
         } catch (err) {
             this.playing.delete(message.channel.id);
-            return message.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+            return message.reply({ content: `Oh no, an error occurred: \`${err.message}\`. Try again later!` });
         }
-
-
-
-
     },
-};
+};  

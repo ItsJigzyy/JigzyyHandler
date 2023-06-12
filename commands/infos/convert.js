@@ -12,14 +12,24 @@ module.exports = {
         let newsteamid = new SteamID(oldid);
         const IDEmbed = new MessageEmbed()
             .setColor(`WHITE`)
-            .addField(`Steam ID:`, `${oldid}`)
-            .addField(`Steam ID 64:`, `${newsteamid}`)
-            .setFooter(`${message.guild.me.displayName}`, client.user.displayAvatarURL())
+            .addFields(
+                {
+                    name: "Steam ID:",
+                    value: `${oldid}`,
+                    inline: false,
+                },
+                {
+                    name: "Steam ID 64:",
+                    value: `${newsteamid}`,
+                    inline: false,
+                },
+            )
+            .setFooter({ text: `JigzDupes`, iconURL: client.user.displayAvatarURL() })
             .setTimestamp(new Date())
 
-        if (!oldid) return message.channel.send("Please provide a Steam ID for me to convert!");
+        if (!oldid) return message.channel.send({ content: "Please provide a Steam ID for me to convert!" });
 
-        message.reply(IDEmbed)
+        message.reply({ embeds: [IDEmbed] })
 
     },
-};
+};  

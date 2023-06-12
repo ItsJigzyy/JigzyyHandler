@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'bcreate',
+    name: 'Bcreate',
     aliases: ['create'],
     category: 'Backup',
     utilisation: '{prefix}bcreate',
@@ -9,20 +9,14 @@ module.exports = {
         const { MessageEmbed } = require("discord.js");
 
 
-        if (!message.member.hasPermission('ADMINISTRATOR')) {
-            return message.channel.send(':x: You need to have Administator permissions to create a backup in this server!');
+        if (!message.member.permissions.has('ADMINISTRATOR')) {
+            return message.channel.send({ content: ':x: You need to have Administator permissions to create a backup in this server!' });
         }
 
         backup.create(message.guild).then((backupData) => {
 
-            return message.channel.send('Backup created! Here is your ID: `' + backupData.id + '` Use `$bload ' + backupData.id + '` to load the backup on another server!');
+            return message.channel.send({ content: 'Backup created! Here is your ID: `' + backupData.id + '` Use `$bload ' + backupData.id + '` to load the backup on another server!' });
 
-        }).catch(() => {
-
-            return message.channel.send(':x: An error occurred, please report to the Support server ');
-
-        });
-
-
+        })
     },
-};
+};  

@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['afk'],
     description: "Set yourself as AFK within the guild",
     category: 'Infos',
-    utilisation: 'afk [reason]',
+    utilisation: '$afk [reason]',
 
     async execute(client, message, args) {
 
@@ -12,14 +12,18 @@ module.exports = {
         const db = require("quick.db");
         const afkReason = args.join(" ");
 
-        await db.set(`afk-${message.author.id}+${message.guild.id}`, afkReason)
+        db.set(`afk-${message.author.id}`, afkReason)
+        message.delete().catch(O_o => { });
+        afkEmbed = new MessageEmbed()
+            .setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
+            .setDescription(`AFK Status: **ON**\nReason: **${afkReason}**`)
+            .setColor('#2C2F33')
+            .setFooter({ text: "I will notify anyone who mentions you" })
+            .setTimestamp(new Date())
 
-        message.channel.send(
-            new MessageEmbed()
-                .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
-                .setDescription(`AFK Status: **ON**\nReason: **${afkReason}**`)
-                .setColor('WHITE')
-                .setFooter("I will notify anyone who mentions you")
-        ).then
+        message.reply({ embeds: [afkEmbed] })
+            .then(msg => {
+                setTimeout(() => msg.delete(), 12000)
+            })
     },
-};
+};  

@@ -8,26 +8,26 @@ module.exports = {
 
         const { MessageEmbed } = require("discord.js");
         const urban = require('urban');
-        
+
 
         if (args.length < 1) {
-            return message.channel.send('Please enter a word');
+            return message.channel.send({ content: 'Please enter a word' });
         }
         let word = args.join(' ');
         console.log(word);
 
         urban(word).first(json => {
             if (!json) {
-                return message.channel.send('No such word exist!');
+                return message.channel.send({ content: 'No such word exist!' });
             }
             console.log(json);
             const def = new MessageEmbed()
                 .setTitle(json.word)
                 .setDescription(json.definition)
                 .setTimestamp(new Date())
-                .setFooter(`Written by ${json.author}`);
+                .setFooter({ text: `Written by ${json.author}` });
 
-            message.channel.send(def);
+            message.channel.send({ embeds: [def] });
         });
     },
-};
+};  

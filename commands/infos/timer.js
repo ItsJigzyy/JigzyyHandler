@@ -11,17 +11,17 @@ module.exports = {
         let Timer = args[0];
 
         if (!args[0]) {
-            return message.channel.send("❌ " + "| Please enter a time period followed by **s**, **m** or **h**");
+            return message.channel.send({ content: "❌ " + "| Please enter a time period followed by **s**, **m** or **h**" });
         }
 
         if (args[0] <= 0) {
-            return message.channel.send("❌ " + "| Please enter a time period followed by **s**, **m** or **h**");
+            return message.channel.send({ content: "❌ " + "| Please enter a time period followed by **s**, **m** or **h**" });
         }
 
-        message.channel.send(" Timer Started for: " + `${ms(ms(Timer), { long: true })}`)
+        message.channel.send({ content: " Timer started for: " + `${ms(ms(Timer), { long: true })}` })
 
         setTimeout(function () {
-            message.channel.send(message.author.toString() + `The ${ms(ms(Timer), { long: true })} Timer Has Ended!`)
+            message.reply({ content: message.author.toString() + `The ${ms(ms(Timer), { long: true })} Timer Has Ended!` })
 
         }, ms(Timer));
 
