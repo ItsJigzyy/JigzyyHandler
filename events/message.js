@@ -5,30 +5,6 @@ const { MessageEmbed, messageCreate } = require("discord.js");
 module.exports = async (client, message) => {
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return
-    //const id = '1086976240394719322'
-    //const user = message.mentions.users.first()
-
-    if (db.has(`afk-${message.author.id}`)) {
-        const info = db.get(`afk-${message.author.id}`)
-        await db.delete(`afk-${message.author.id}`)
-
-        const WelcomeBackEmbed = new MessageEmbed()
-            .setAuthor({ name: `${message.author.tag}`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
-            .setDescription(`Welcome back!\nAFK Status: **OFF**`)
-            .setColor('WHITE');
-        message.channel.send({ embeds: [WelcomeBackEmbed] })
-            .then(msg => {
-                setTimeout(() => msg.delete(), 10000)
-            })
-    };
-
-    if (message.mentions.users.first()) {
-        if (db.has(`afk-${message.mentions.users.first().id}`)) {
-            message.delete().catch(O_o => { });
-            message.channel.send({ content: `${message.mentions.members.first()} is AFK 🚫\nReason: ` + db.get(`afk-${message.mentions.users.first().id}`), allowedMentions: { repliedUser: false } })
-        } else return;
-    };
-
 
     const prefix = client.config.discord.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);

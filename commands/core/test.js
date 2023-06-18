@@ -7,5 +7,7 @@ module.exports = {
    async execute(client, message, args) {
 
       message.reply({ content: `I am online with a ping of **${client.ws.ping}ms**!` })
+
+
    },
 };  
